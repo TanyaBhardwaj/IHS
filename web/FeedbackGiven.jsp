@@ -1,6 +1,6 @@
 <%-- 
-    Document   : RegHospital
-    Created on : 14 Mar, 2016, 2:22:07 PM
+    Document   : FeedbackGiven
+    Created on : 22 Mar, 2016, 12:38:57 AM
     Author     : Tanya
 --%>
 
@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,16 +28,15 @@
     </style>
     </head>
     <body>
-        <div class="main">   
+         <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
-          <li><a href="login.jsp"><span>LOGIN</span></a></li>
-          <li><a href="register.jsp"><span>REGISTER</span></a></li>
-          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-          
+          <li class="active"><a href="index.jsp"><span>Home</span></a></li>
+          <li><a href="login.jsp"><span>Login</span></a></li>
+          <li><a href="register.jsp"><span>Register</span></a></li>
+          <li><a href="contact.jsp"><span>Contact Us</span></a></li>
         </ul>
             <br>
           <ul>
@@ -47,74 +47,54 @@
           </UL>
       </div>
       <div class="logo">
-          <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
+          <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
       </div>
       <div class="clr"></div>
     </div>
   </div>
             <div class="content">
     <div class="content_resize">
-         <div class="sidebar">
+        <div class="sidebar">
         <div class="clr"></div>
         <div class="gadget">
             <h2 class="star"> <span></span> </h2>
           <div class="clr"></div>
+          <ul class="sb_menu">
+              
+          
+            <li><a href=""></a></li>
+             <li><a href=""></a></li>
+             <li><a href="#"</a></li>
+          </ul>
          
-           
         </div>
         
       </div>
         <div class="mainbar">
             <div class="article"> 
-                 
-    <form action="RegWorkplace" method="post">  
-       <table>
-           <tr>
-               <th>TYPE:</th>
-               <td> <select name="Wtype">
-               <option value="hospital">Hospital</option>
-                <option value="lab">Laboratory</option>
-                <option value="clinic">Clinic</option>
-                   </select>  </td> 
-           </tr>
-           <tr>
-               <th> NAME:</th>
-               <td><input type="text" name="workname"><br><br></td>
-           </tr>
-           <tr>
-           <th>SPECIALIZATION</th>
-           <td> <input type="text" name="specialization"><br><br></td>
-           </tr>
-           <tr>
-               <th>EMAIL</th>
-               <td><input type="text" name="email"><br><br></td>
-           </tr>
-           <tr>
-               <th>CONTACT NO:</th>
-               <td><input type="number" name="contact"></br><br></td>
-           </tr>
-           <tr>
-               <th><b>PASSWORD</b></th>
-               <td><input type="password" name="password"></br></br></td>
-           </tr>
-           <tr>
-               <th> RETYPE PASSWORD</th>
-               <td><input type="password" name="RPassword"> </br></br></td>
-           </tr>
-           <br>
-           <br>
-       </table>
-      <button style="font-size:30px" type="submit">SUBMIT</button>
-   <button style="font-size:30px" type="reset">CANCEL</button>
-</form>   
-                 
-        
-       
-               
+                <div>
+                    <h1 style="color:black; ">THANKYOU USER!!!</H1>
+                    <BR>
+                    <BR>
+                    <h2 style=" text-align: center; color:lightblueblue;  ">YOUR</h2>
+                     <h2 style="text-align: center; color:lightblueblue">FEEDBACK </h2>
+                      <h2 style="text-align: center; color:lightblueblue">WILL HELP US PROVIDE </h2>
+                       <h2 style="text-align: center; color:lightblueblue">BETTER SERVICE IN FUTURE </h2>
+                      <BR>
+                      <BR>
+                      <BR>
+                      <form action="index.jsp" method="post">
+                           <button style="font-size:30px" type="submit">CONTINUE YOUR SEARCH</button>
+                            <button style="font-size:30px" type="submit">LOGOUT</button>
+                           <BR>
+                           <BR>
+                        
+                      </form>
+                   </div>
             </div>
         </div>
           
-       
+        
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">
@@ -125,8 +105,5 @@
   </div>
   
         </div>
-    </body>
-</html>
-
     </body>
 </html>

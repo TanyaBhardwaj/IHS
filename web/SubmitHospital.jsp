@@ -32,11 +32,18 @@
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>Home Page</span></a></li>
-          <li><a href="Login.jsp"><span>Login</span></a></li>
-          <li><a href="Register.jsp"><span>Register</span></a></li>
-          <li><a href="Contact.html"><span>Contact Us</span></a></li>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
         </ul>
+           <br>
+          <ul>
+              <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
+              <li>  <a href="#"><span>FIRST AID</span></a></li>
+              <li>    <a href="#"><span>DISEASES</span></a></li>
+              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
+          </UL>
       </div>
       <div class="logo">
           <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
@@ -46,44 +53,38 @@
   </div>
             <div class="content">
     <div class="content_resize">
+        <div class="sidebar">
+        <div class="clr"></div>
+        <div class="gadget">
+            <h2 class="star"> <span></span> </h2>
+          <div class="clr"></div>
+         
+        </div>
+        
+      </div>
         <div class="mainbar">
             <div class="article"> 
                 <div>
-                    <h1 style="color:black; ">REGISTRATION FOR USERS</H1>
+                   <h2 style="color:black; ">THANKYOU FOR REGISTERING WITH IHS :)</H2>
                     <BR>
                     <BR>
-                    <h2 style=" text-align: center; color:lightblueblue;  ">YOU HAVE </h2>
-                     <h2 style="text-align: center; color:lightblueblue">SUCCESSFULLY </h2>
-                      <h2 style="text-align: center; color:lightblueblue">CREATED AN ACCOUNT </h2>
-                      <BR>
-                      <BR>
+                    <h2 style=" text-align: center; color:lightblue;  ">YOU HAVE </h2>
+                     <h2 style="text-align: center; color:lightblue">SUCCESSFULLY </h2>
+                      <h2 style="text-align: center; color:lightblue">CREATED AN ACCOUNT </h2>
+                  
+                      <h2 style=" text-align: center; color:lightblue;  ">You will soon get a verification mail on youe Email </h2>
+                       <h2 style=" text-align: center; color:lightblue;  ">Click the link given in that to begin your search </h2>
+                          <BR>
                       <BR>
                       <form action="WorkplceProfile" method="post">
                            <button style="font-size:30px" type="submit">CLICK HERE TO SEE YOUR PROFILE</button>
-                           <BR>
-                           <BR>
-                        <button style="font-size:30px" type="LOGIN">LOGIN</button>
+                           
                       </form>
                    </div>
             </div>
         </div>
           
-        <div class="sidebar">
-        <div class="clr"></div>
-        <div class="gadget">
-            <h2 class="star"> <span>MENU</span> </h2>
-          <div class="clr"></div>
-          <ul class="sb_menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">ABOUT US</a></li>
-            <li><a href="#">FIRST AID</a></li>
-            <li><a href="#">DISEASES</a></li>
-            <li><a href="#">CAREERS</a></li>
-          </ul>
-           
-        </div>
         
-      </div>
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">

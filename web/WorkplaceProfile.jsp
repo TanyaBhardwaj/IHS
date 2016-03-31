@@ -24,6 +24,53 @@
             background-image: none;
             background-color: black;
         }
+         table{
+            border: 1px solid black;
+            border-spacing: 20px;
+        }
+        td{
+             border: solid 1px black;
+             padding: 10px;
+        }
+         th{
+            border: solid 1px black;
+             padding: 10px;
+        }
+        </style>
+        <script>
+             function _(el){
+	return document.getElementById(el);
+}
+function uploadFile(){
+	var file = _("file1").files[0];
+	// alert(file.name+" | "+file.size+" | "+file.type);
+	var formdata = new FormData();
+	formdata.append("file", file);
+	var ajax = new XMLHttpRequest();
+	ajax.upload.addEventListener("progress", progressHandler, false);
+	ajax.addEventListener("load", completeHandler, false);
+	ajax.addEventListener("error", errorHandler, false);
+	ajax.addEventListener("abort", abortHandler, false);
+	ajax.open("POST", "DocProfileServlet");
+	ajax.send(formdata);
+}
+function progressHandler(event){
+	_("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total;
+	var percent = (event.loaded / event.total) * 100;
+	_("progressBar").value = Math.round(percent);
+	_("status").innerHTML = Math.round(percent)+"% uploaded... please wait";
+}
+function completeHandler(event){
+	_("status").innerHTML = event.target.responseText;
+	_("progressBar").value = 0;
+}
+function errorHandler(event){
+	_("status").innerHTML = "Upload Failed";
+}
+function abortHandler(event){
+	_("status").innerHTML = "Upload Aborted";
+}
+    </script>
     </style>
     </head>
     <body>
@@ -32,11 +79,18 @@
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>Home Page</span></a></li>
-          <li><a href="Login.jsp"><span>Login</span></a></li>
-          <li><a href="Register.jsp"><span>Register</span></a></li>
-          <li><a href="Contact.html"><span>Contact Us</span></a></li>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
         </ul>
+          <BR>
+           <ul>
+              <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
+              <li>  <a href="#"><span>FIRST AID</span></a></li>
+              <li>    <a href="#"><span>DISEASES</span></a></li>
+              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
+          </UL>
       </div>
       <div class="logo">
           <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
@@ -46,24 +100,66 @@
   </div>
             <div class="content">
     <div class="content_resize">
+         <div class="sidebar">
+        <div class="clr"></div>
+        <div class="gadget">
+            <BR>
+            <BR>
+            <BR>
+            <h2 class="star"> <span>SERVICES</span> </h2>
+          <div class="clr"></div>
+          <ul class="sb_menu">
+             <li><a href="WorkplaceBranches,jsp">ADD BRANCHES</a></li>
+            
+            <li><a href="Feedback.jsp">GIVE YOUR FEEDBACK</a></li>
+            <li><a href="index.jsp">LOGOUT</a></li>
+                      </ul>
+            <br>
+         
+        </div>
+        
+      </div>
         <div class="mainbar">
-            <div class="article"> 
-                  <h1 style="color:black; ">MY PROFILE</H1>
+            <div class="article">
+              
+                  <h1 style="color:black;align-content: center "></H1>
+                  <BR>
+                  <button style="font-size:25px" type="submit">EDIT YOUR PROFILE</button>
+             
                     <BR>
+                    <BR>
+           <form id="upload_form" enctype="multipart/form-data" method="post">
+                        <table>
+                            <tr style="border: 1px solid black">
+                                <td>
+                                    <br>
+                                    <BR>
+  <input type="file" name="file" id="file1"><br>
+  <input type="button" value="UPLOAD PHOTO" onclick="uploadFile()">
+  <progress id="progressBar" value="0" max="100" style="width:100px;"></progress>
+  <h3 id="status"></h3>
+  <p id="loaded_n_total"></p>
+                                </td>
+                                 <td>  <textarea rows="4" cols="30">
+
+                        </textarea> </td>
+       </tr>
+                        </table>
+</form> 
+                          
+                    
                 <form action="WorkplaceProfile" method="post">         
   <table>
-       <tr>
-               <th>STATE:</th>
-               <td> <select name="Type">
+       
+        <tr style="border: 1px solid black">
+           
+               <td> STATE:<select name="Type">
                <option value="karnataka">Karnataka</option>
                 <option value="punjab">Punjab</option>
                 <option value="Kerela">Kerela</option>
-                   </select>  </td> 
-           </tr>
-           <br>
-  <tr>
-  <th>CITY:</th>
-               <td> <select name="Type">
+                   </select>  </td>
+
+               <td> CITY:<select name="Type">
                <option value="Delhi">Delhi</option>
                 <option value="Banglore">Banglore</option>
                 <option value="Amritsar">Amritsar</option>
@@ -75,52 +171,50 @@
                    </select>  </td> 
   </tr>
   <br>
-  <tr>
+   <tr style="border: 1px solid black">
   <th>ADDRESS: </th>
-  <td><input type="text" name="RecoveryEmail"><br><br></td>
+   <td>  <textarea rows="4" cols="30">
+
+                        </textarea> </td>
   </tr>
-  <tr>
-      <th>LANDMARK:</th>
-      <td><input type="number" name="Contact No"></br><br></td>
+   <tr style="border: 1px solid black">
+      <th>AREA:</th>
+       <td>  <textarea rows="2" cols="30">
+
+                        </textarea> </td>
   </tr>
-  <tr>
+   <tr style="border: 1px solid black">
       <th>TYPE </th>
-      <td><input type="password" name="Password"> </br><br> </td>
+      <td>
+           <form>
+  <input type="radio" name="type" value="government">GOVERNMENT
+  <input type="radio" name="type" value="private">PRIVATE
+ 
+</form> 
+      </td>
   </tr>
-  <tr>
+   <tr style="border: 1px solid black">
       <th>TIMINGS</th>
-      <td> <input type="password" name="Password"> </br><br> </td>
+       <td>  <textarea rows="1" cols="30">
+
+                        </textarea> </td>
   </tr>
-   <tr>
+    <tr style="border: 1px solid black">
       <th>WEBSITE</th>
-      <td> <input type="password" name="Password"> </br><br> </td>
+       <td>  <textarea rows="1" cols="30">
+
+                        </textarea> </td>
   </tr>
-   <br>
-   <br>
+  <br>
   </table>
+                    <br>
    <button style="font-size:25px" type="submit">SAVE</button>
    <button style="font-size:25px" type="reset">CANCEL</button> 
-   <button style="font-size:25px" type="submit">ADD BRANCH</button>
    </form>      
           </div>
         </div>
           
-        <div class="sidebar">
-        <div class="clr"></div>
-        <div class="gadget">
-            <h2 class="star"> <span>MENU</span> </h2>
-          <div class="clr"></div>
-          <ul class="sb_menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">ABOUT US</a></li>
-            <li><a href="#">FIRST AID</a></li>
-            <li><a href="#">DISEASES</a></li>
-            <li><a href="#">CAREERS</a></li>
-          </ul>
-           
-        </div>
-        
-      </div>
+       
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">

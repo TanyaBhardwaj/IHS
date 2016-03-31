@@ -1,6 +1,6 @@
 <%-- 
-    Document   : RegHospital
-    Created on : 14 Mar, 2016, 2:22:07 PM
+    Document   : WorkplaceLogin
+    Created on : 23 Mar, 2016, 11:49:49 AM
     Author     : Tanya
 --%>
 
@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,8 @@
     </style>
     </head>
     <body>
-        <div class="main">   
+         
+        <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
@@ -38,7 +40,7 @@
           <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
           
         </ul>
-            <br>
+          <br>
           <ul>
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
@@ -54,67 +56,47 @@
   </div>
             <div class="content">
     <div class="content_resize">
-         <div class="sidebar">
+        <div class="sidebar">
         <div class="clr"></div>
         <div class="gadget">
             <h2 class="star"> <span></span> </h2>
           <div class="clr"></div>
-         
+          <ul class="sb_menu">
+           
+            <li><a href=""></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+             <li><a href=""></a></li>
+          </ul>
            
         </div>
         
       </div>
         <div class="mainbar">
+            
             <div class="article"> 
                  
-    <form action="RegWorkplace" method="post">  
-       <table>
-           <tr>
-               <th>TYPE:</th>
-               <td> <select name="Wtype">
-               <option value="hospital">Hospital</option>
-                <option value="lab">Laboratory</option>
-                <option value="clinic">Clinic</option>
-                   </select>  </td> 
-           </tr>
-           <tr>
-               <th> NAME:</th>
-               <td><input type="text" name="workname"><br><br></td>
-           </tr>
-           <tr>
-           <th>SPECIALIZATION</th>
-           <td> <input type="text" name="specialization"><br><br></td>
-           </tr>
-           <tr>
-               <th>EMAIL</th>
-               <td><input type="text" name="email"><br><br></td>
-           </tr>
-           <tr>
-               <th>CONTACT NO:</th>
-               <td><input type="number" name="contact"></br><br></td>
-           </tr>
-           <tr>
-               <th><b>PASSWORD</b></th>
-               <td><input type="password" name="password"></br></br></td>
-           </tr>
-           <tr>
-               <th> RETYPE PASSWORD</th>
-               <td><input type="password" name="RPassword"> </br></br></td>
-           </tr>
-           <br>
-           <br>
-       </table>
-      <button style="font-size:30px" type="submit">SUBMIT</button>
-   <button style="font-size:30px" type="reset">CANCEL</button>
-</form>   
+                 
                  
         
-       
+        <form action="LoginServlet" method="post">
+          
+            <br><br>
+            
+            <label style="font-size: 30px">USER EMAIL <br></label><input type="email" name="username" required><br>
+        <br>
+        <br>
+        <label style="font-size: 30px">PASSWORD <br></label><input type="password" name="password" required><br>
+        <br>
+        <br>
+        <button style="font-size:30px" type="submit">LOGIN</button>
+        </form>
                
             </div>
         </div>
           
-       
+        
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">
@@ -125,8 +107,5 @@
   </div>
   
         </div>
-    </body>
-</html>
-
     </body>
 </html>

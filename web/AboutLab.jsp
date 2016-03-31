@@ -1,6 +1,6 @@
 <%-- 
-    Document   : RegHospital
-    Created on : 14 Mar, 2016, 2:22:07 PM
+    Document   : AboutLab
+    Created on : 22 Mar, 2016, 12:12:35 PM
     Author     : Tanya
 --%>
 
@@ -9,25 +9,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Indian Health Services</title>
+         <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/coin-slider.css" />
+        <link rel="stylesheet" type="text/css" href="css/coin-slider.css" />
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-aller.js"></script>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
+
     <style>
          .main{
             background-image: none;
             background-color: black;
         }
+        table{
+            border-spacing: 30px;
+        }
+        td{
+             border: solid 1px black;
+             padding: 10px;
+        }
     </style>
     </head>
     <body>
-        <div class="main">   
+        <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
@@ -36,86 +44,91 @@
           <li><a href="login.jsp"><span>LOGIN</span></a></li>
           <li><a href="register.jsp"><span>REGISTER</span></a></li>
           <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-          
         </ul>
-            <br>
+          <br>
           <ul>
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
               <li>    <a href="#"><span>DISEASES</span></a></li>
               <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
+              
+              
       </div>
       <div class="logo">
-          <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
+          <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
       </div>
       <div class="clr"></div>
     </div>
   </div>
             <div class="content">
+                 
+                
+                
+              
     <div class="content_resize">
-         <div class="sidebar">
+          <div class="sidebar">
+              <br> <br>
+              <br>
+              <br>
+                     
+                     
+                     <br>
+                     <form action="HospFeedback.jsp" method="post">
+                     <button style="font-size:25px" type="submit">READ FEEDBACK</button>
+                     </form>
+                     <form action="WorkplaceBranches.jsp" method="post">
+                     <button style="font-size:25px" type="submit">BRANCHES</button>
+                     </form>
+                     
         <div class="clr"></div>
         <div class="gadget">
-            <h2 class="star"> <span></span> </h2>
+            
           <div class="clr"></div>
-         
+          <div class="sb_menu">
+             
            
         </div>
         
       </div>
+        </div>
         <div class="mainbar">
             <div class="article"> 
-                 
-    <form action="RegWorkplace" method="post">  
-       <table>
-           <tr>
-               <th>TYPE:</th>
-               <td> <select name="Wtype">
-               <option value="hospital">Hospital</option>
-                <option value="lab">Laboratory</option>
-                <option value="clinic">Clinic</option>
-                   </select>  </td> 
-           </tr>
-           <tr>
-               <th> NAME:</th>
-               <td><input type="text" name="workname"><br><br></td>
-           </tr>
-           <tr>
-           <th>SPECIALIZATION</th>
-           <td> <input type="text" name="specialization"><br><br></td>
-           </tr>
-           <tr>
-               <th>EMAIL</th>
-               <td><input type="text" name="email"><br><br></td>
-           </tr>
-           <tr>
-               <th>CONTACT NO:</th>
-               <td><input type="number" name="contact"></br><br></td>
-           </tr>
-           <tr>
-               <th><b>PASSWORD</b></th>
-               <td><input type="password" name="password"></br></br></td>
-           </tr>
-           <tr>
-               <th> RETYPE PASSWORD</th>
-               <td><input type="password" name="RPassword"> </br></br></td>
-           </tr>
-           <br>
-           <br>
-       </table>
-      <button style="font-size:30px" type="submit">SUBMIT</button>
-   <button style="font-size:30px" type="reset">CANCEL</button>
-</form>   
-                 
-        
-       
+                <div>
+                      <table style="width:100%">
+                          <tr style="border: 1px solid black">
+                              <td><a href=""><img width="90px" height="90px" src="icons/doc1.png" /> </a>
                
+                    </td> 
+                       
+                    <td>NAME:</td>
+           </tr>
+          
+                 <tr style="border: 1px solid black">
+                 <td>ABOUT DOCTOR: </td> 
+                 </TR>  
+          
+                    <tr style="border: 1px solid black">
+                        <TD> WEBSITE: 
+               
+                    </td>
+                    
+           </tr>
+           </tr>
+                 <tr style="border: 1px solid black">
+                 <td>CONTACT: 
+               
+                    </td> 
+                   
+           </tr>
+           
+           </table>
+                     
+                </div>
             </div>
         </div>
-          
-       
-      <div class="clr"></div>
+                <div class="clr"></div>
+                   
       <div class="footer">
     <div class="footer_resize">
       <p class="lf">&copy; Copyright <a href="#">MyWebSite</a>.</p>
@@ -125,8 +138,7 @@
   </div>
   
         </div>
-    </body>
-</html>
-
+        </div>
+          </div>
     </body>
 </html>

@@ -7,6 +7,12 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Tanya
  */
 @WebServlet(name = "RegDoc", urlPatterns = {"/RegDoc"})
-public class RegDoc extends HttpServlet {
+public class RegDocServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,12 +34,30 @@ public class RegDoc extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String Name=request.getParameter("name");
+            String Email=request.getParameter("Email");
+            String Category=request.getParameter("category");
+            String Contact=request.getParameter("ContactNo");
+            String Password=request.getParameter("Password");
+                      Class.forName("com.mysql.jdbc.Driver");
+                      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+                      PreparedStatement AddUser=conn.prepareStatement("INSERT INTO doctor(doc_name, doc_email,doc_category,doc_phone, doc_password ) VALUES(?, ?, ?, ?, ?);");
+                      AddUser.setString(1, Name);
+                      AddUser.setString(2, Email);
+                      AddUser.setString(3, Category );
+                      AddUser.setString(4, Contact);
+                     AddUser.setString(5, Password);
+                      AddUser.executeUpdate();
+                      //response.sendRedirect("SubmitUser.jsp");
+           
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -44,6 +68,8 @@ public class RegDoc extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
             response.sendRedirect("SubmitDoc.jsp");
+        }catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -59,7 +85,11 @@ public class RegDoc extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegDocServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,7 +103,13 @@ public class RegDoc extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegDocServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegDocServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -23,78 +23,71 @@
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link href="css/custom.css" rel="stylesheet" type="text/css" />
+<style>
+         .main{
+            background-image: none;
+            background-color: black;
+        }
+    </style>
     </head>
     <body>
          <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
-        <ul class="nav nav-inverse">
-          <li class="active"><a href="index.jsp"><span>Home Page</span></a></li>
-          <li><a href="login.jsp"><span>Login</span></a></li>
-          <li><a href="register.jsp"><span>Register</span></a></li>
-          <li><a href="contact,jsp"><span>Contact Us</span></a></li>
-           <li><a href="aboutus.jsp"><span>About Us</span></a></li>
+          <ul>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
+        </ul>
+          <br>
+          <ul>
+            
+            <li><a href="aboutus.jsp">ABOUT US</a></li>
+            <li><a href="#">FIRST AID</a></li>
+            <li><a href="#">DISEASES</a></li>
            
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+          </ul>
           
         </ul>
       </div>
       <div class="logo">
           <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small>HELPING MANKIND</small></a></h1>
       </div>
-      <div class="clr"></div>
-      <div class="slider">
+      <!--<div class="clr"></div>
+      <!--<div class="slider">
         <div id="coin-slider">
             <a href="#"><img src="images/slide1.jpg" width="940" height="271" alt="" /></a> 
             <a href="#"><img src="images/slide2.jpg" width="940" height="271" alt="" /></a> 
             <a href="#"><img src="images/slide3.jpg" width="940" height="271" alt="" /></a>
         </div>
-      </div>
+      </div>-->
       <div class="clr"></div>
     </div>
   </div>
             
             <div class="content">
     <div class="content_resize">
-      
-     <div class="sidebar">      
+        
       <div class="clr"></div>
         <div class="clr"></div>
          
-          <ul class="sb_menu">
               
-              <TABLE>
-                  <TR>
-                      <TH><h2 class="star"> <span><b><U><h1>MENU</H1></U></b></span> </h2></TH>
-              </TR>
-                  
-                  <TR>
-                      <TH><a href="#"><b><H4>ABOUT US</H4></b></a></TH>
-                  <BR>
-              </TR>
-             
-              <TR>
-                  <TH><a href="#"><b><H4>FIRST AID</H4></b></a></TH>
-</TR>
-<BR>
-<TR>
-    <TH><a href="#"><b><H4>DISEASES</H4></b></a></li></TH>
-</TR>
-<BR>
-<TR>
-    <TH><a href="#"><b><H4>CAREERS</H4></b></a></TH>
-</TR>
-<BR>
-<TR>
-    <TH><a href="#"><b><H4>FEEDBACK</H4></b></a></TH> 
-</TR>
-              </TABLE>
-          </ul>
+          
            
         </div>
         <div class="gadget">
             
-            
+             <div class="sidebar">
+        <div class="clr"></div>
+        <div class="gadget">
+            <h2 class="star"> <span></span> </h2>
+          <div class="clr"></div>
+        <ul class="sb_menu">
+           
+        </div>
           
         
       </div>
