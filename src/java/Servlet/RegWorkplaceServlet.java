@@ -5,7 +5,6 @@
  */
 package Servlet;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -76,7 +75,8 @@ public class RegWorkplaceServlet extends HttpServlet {
             out.println("</html>");
              String Email,Password,server,port;
         String t_address=email;
-        String msgtext="ggrtergterg";
+        String msgtext="You are successfully registered in IHS."
+                + "Login to begin your search";
         Email="tbjune7@gmail.com";
         Password="1234567890@123";
         server="smtp.gmail.com";

@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
 
-import java.io.File;
+import Servlet.DocProfileServlet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,9 +29,9 @@ import javax.servlet.http.Part;
  *
  * @author Tanya
  */
-@WebServlet(name = "DocProfileServlet", urlPatterns = {"/DocProfileServlet"})
+@WebServlet(name = "UserProfileServlet", urlPatterns = {"/UserProfileServlet"})
 @MultipartConfig
-public class DocProfileServlet extends HttpServlet {
+public class UserProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,12 +41,14 @@ public class DocProfileServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             Part filePart=request.getPart("file");
+              Part filePart=request.getPart("file");
     //        String filename=filePart.getSubmittedFileName().substring(filePart.getSubmittedFileName().lastIndexOf("\\"), filePart.getSubmittedFileName().length());
             InputStream fileContent=filePart.getInputStream();
 //            File upload_dir=new File("C:/Users/Tanya/Desktop/my project/uploads/");
@@ -58,22 +58,23 @@ public class DocProfileServlet extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-      PreparedStatement AddPhoto=conn.prepareStatement("update doctor set doc_photo=? where doc_id=?");
+      PreparedStatement AddPhoto=conn.prepareStatement("update user set user_photo=? where user_id=?");
       AddPhoto.setBlob(1, fileContent);
       AddPhoto.setInt(2, 1);
       AddPhoto.executeUpdate();
-            } catch (ClassNotFoundException ex) {
+          } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+      
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DocProfileServlet</title>");            
+            out.println("<title>Servlet UserProfileServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DocProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserProfileServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -93,8 +94,10 @@ public class DocProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -111,8 +114,10 @@ public class DocProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -4,6 +4,12 @@
     Author     : Tanya
 --%>
 
+<%@page import="java.sql.Blob"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -129,15 +135,33 @@ function abortHandler(event){
                     
                     <form id="upload_form" enctype="multipart/form-data" method="post">
                         <table>
-                            <tr style="border: 1px solid black">
+                           <tr style="border: 1px solid black">
                                 <td>
                                     <BR>
                                     <BR>
-  <input type="file" name="file" id="file1"><br>
+                                                 <form id="upload_form" enctype="multipart/form-data" method="post">
+                                    <input type="file" name="file" id="file1"><BR>
   <input type="button" value="UPLOAD PHOTO" onclick="uploadFile()">
   <progress id="progressBar" value="0" max="100" style="width:100px;"></progress>
   <h3 id="status"></h3>
-  <p id="loaded_n_total"></p>
+  <p id="loaded_n_total"></p></form>
+                                </td>
+                                <td>
+                    <%
+                        Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+                        PreparedStatement ShowPhoto=conn.prepareStatement("select doc_photo from doctor where doc_id=?");
+      ShowPhoto.setInt(1, 1);
+      ResultSet Photos=ShowPhoto.executeQuery();
+      Photos.first();
+      Blob image=Photos.getBlob("doc_photo");
+      if(image!=null)
+      {
+       byte [] imgData=image.getBytes(1, (int)image.length());
+        String imgDataBase64=new String(Base64.getEncoder().encode(imgData)); 
+        out.println("<img src='data:image/png;base64,"+imgDataBase64+"' width=100 height=100 />");
+      }
+                    %>                
                                 </td>
                                  <td>  <textarea rows="4" cols="30">
 

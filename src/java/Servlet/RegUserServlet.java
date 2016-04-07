@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Message;
@@ -54,13 +55,22 @@ public class RegUserServlet extends HttpServlet {
             String Name=request.getParameter("name");
             String Email=request.getParameter("Email");
             String REmail=request.getParameter("RecoveryEmail");
-            String Password=request.getParameter("Password");
+//            String Password=request.getParameter("Password");
+            String allowedchars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random rand=new Random();
+            char[] Password=new char[6];
+            int i;
+            for(i=0;i<Password.length;i++)
+            {
+                Password[i]=allowedchars.charAt(rand.nextInt(allowedchars.length()));
+            }
+
                       Class.forName("com.mysql.jdbc.Driver");
                       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
                       PreparedStatement AddUser=conn.prepareStatement("INSERT INTO user(user_name, user_email, user_password, user_rec_email) VALUES(?, ?, ?, ?);");
                       AddUser.setString(1, Name);
                       AddUser.setString(2, Email);
-                      AddUser.setString(3, Password);
+                      AddUser.setString(3, new String(Password));
                       AddUser.setString(4, REmail);
                       AddUser.executeUpdate();
                       //response.sendRedirect("SubmitUser.jsp");
@@ -75,7 +85,8 @@ public class RegUserServlet extends HttpServlet {
             out.println("</html>");
               String email,password,server,port;
         String t_address=Email;
-        String msgtext="ggrtergterg";
+        String msgtext="You are successfully registered in IHS." 
+                + "Login to begin your search your password is"+new String(Password);
         email="tbjune7@gmail.com";
         password="1234567890@123";
         server="smtp.gmail.com";

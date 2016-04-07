@@ -4,6 +4,10 @@
     Author     : Tanya
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,7 +57,15 @@
               <li>    <a href="#"><span>DISEASES</span></a></li>
               <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
-              
+              <%
+                  Class.forName("com.mysql.jdbc.Driver");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+       
+      PreparedStatement getUser=conn.prepareStatement("Select branch_city,branch_area,branch_timing from ihs.branch where branch_city=?,branch_area and branch_timing=?");
+            
+      ResultSet users=getUser.executeQuery( );
+      
+                  %>
               
       </div>
       <div class="logo">
@@ -71,6 +83,9 @@
            
         <div class="sidebar">
              <div>
+                 <form action="WorkplaceSearch.jsp" method="get">
+                     
+                
                    <table>
                 <tr>           
                     <td>CITY:<select name="Type">                   
@@ -115,7 +130,12 @@
                     </td> 
            </tr>
            <br>
-           </table>  
+           </table> 
+            
+           
+                      <button style="font-size:25px" type="submit">APPLY FILTER</button>
+                     
+                 </FORM>
                 </div>
            
             
@@ -134,6 +154,49 @@
       </div>
         </div>
         <div class="mainbar">
+            <%
+                while(users.next())
+                {
+                    
+                    %>
+                    <div class="article"> 
+                <div>
+                     <table style="width:100%">
+                          <tr style="border: 1px solid black">
+                              <td><a href="AboutHosp.jsp"><img width="90px" height="90px" src="icons/hos.png" /> </a>
+               
+                    </td> 
+                       
+                    <td>ABOUT HOSPITAL:</td>
+           </tr>
+          
+                 <tr style="border: 1px solid black">
+                     <td>NAME:<%=users.getString("workplace_name")%>  </td> 
+                    <td>TYPE:</TD>
+          
+                    <tr style="border: 1px solid black">
+                     <td> SPECIALITY: 
+               
+                    </td>
+                    
+           </tr>
+           </tr>
+                 <tr style="border: 1px solid black">
+                 <td>ADDRESS: 
+               
+                    </td> 
+                   
+           </tr>
+                     </TABLE>
+                    <BR>
+                    <FORM ACTION="AboutHosp.jsp" method="post">
+                     <button style="font-size:25px" type="submit">SEE MORE</button>
+                    </form>
+                </div>
+            </div>
+            <%
+                }
+                %>
             <div class="article"> 
                 <div>
                      <table style="width:100%">

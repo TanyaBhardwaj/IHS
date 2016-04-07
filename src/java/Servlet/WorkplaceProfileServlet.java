@@ -5,11 +5,9 @@
  */
 package Servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +18,6 @@ import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +28,8 @@ import javax.servlet.http.Part;
  *
  * @author Tanya
  */
-@WebServlet(name = "DocProfileServlet", urlPatterns = {"/DocProfileServlet"})
-@MultipartConfig
-public class DocProfileServlet extends HttpServlet {
+@WebServlet(name = "WorkplaceProfileServlet", urlPatterns = {"/WorkplaceProfileServlet"})
+public class WorkplaceProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,6 +39,7 @@ public class DocProfileServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
@@ -58,22 +55,23 @@ public class DocProfileServlet extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-      PreparedStatement AddPhoto=conn.prepareStatement("update doctor set doc_photo=? where doc_id=?");
+      PreparedStatement AddPhoto=conn.prepareStatement("update workplace set workplace_photo=? where workplace_id=?");
       AddPhoto.setBlob(1, fileContent);
       AddPhoto.setInt(2, 1);
       AddPhoto.executeUpdate();
+     
+      
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(WorkplaceProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DocProfileServlet</title>");            
+            out.println("<title>Servlet WorkplaceProfileServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DocProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet WorkplaceProfileServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -94,7 +92,7 @@ public class DocProfileServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WorkplaceProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -112,7 +110,7 @@ public class DocProfileServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WorkplaceProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -32,14 +32,14 @@
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>Home Page</span></a></li>
-          <li><a href="login.jsp"><span>Login</span></a></li>
-          <li><a href="register.jsp"><span>Register</span></a></li>
-          <li><a href="contact.jsp"><span>Contact Us</span></a></li>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
         </ul>
       </div>
       <div class="logo">
-          <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
+          <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
       </div>
       <div class="clr"></div>
     </div>
@@ -67,20 +67,20 @@
       <td><input type="text" name="name" required><br><br></td>
   </tr>
   <tr>
-  <th>CATEGORY OF DOCTOR:</th>
+  <th>CATEGORY:</th>
   <td><input type="text" name="category" required><br><br> </td>
   </tr>
   <tr>
   <th>EMAIL: </th>
-  <td><input type="text" name="Email" required><br><br></td>
+  <td><input type="text" name="email" required><br><br></td>
   </tr>
   <tr>
       <th>CONTACT NO.:</th>
-      <td><input type="number" name="ContactNo" required></br><br></td>
+      <td><input type="text" name="contact" required></br><br></td>
   </tr>
   <tr>
       <th>PASSWORD </th>
-      <td><input type="password" name="Password" required> </br><br> </td>
+      <td><input type="password" name="password" required> </br><br> </td>
   </tr>
   <tr>
       <th>RETYPE PASSWORD </th>
