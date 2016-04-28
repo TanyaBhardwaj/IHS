@@ -1,6 +1,6 @@
 <%-- 
     Document   : UserLogin
-    Created on : 21 Mar, 2016, 12:39:30 PM
+    Created on : 14 Apr, 2016, 4:05:10 PM
     Author     : Tanya
 --%>
 
@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,75 +29,74 @@
     </style>
     </head>
     <body>
-        <div class="main">
+      <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>Home Page</span></a></li>
-          <li><a href="login.jsp"><span>Login</span></a></li>
-          <li><a href="register.jsp"><span>Register</span></a></li>
-          <li><a href="contact.jsp"><span>Contact Us</span></a></li>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
+          
         </ul>
-           <br>
+          <br>
           <ul>
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
               <li>    <a href="#"><span>DISEASES</span></a></li>
-              <li> <a href="feedback.jsp"><span>FEEDBACK</span></a></li>
+              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
-              
       </div>
       <div class="logo">
-          <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
+          <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
       </div>
       <div class="clr"></div>
     </div>
   </div>
             <div class="content">
-               
     <div class="content_resize">
-        
         <div class="sidebar">
         <div class="clr"></div>
         <div class="gadget">
-            <h2 class="star"> <span>MENU</span> </h2>
+            <h2 class="star"> <span></span> </h2>
           <div class="clr"></div>
           <ul class="sb_menu">
-            
-            <li><a href="UserProfile.jsp">YOUR PROFILE</a></li>
-            <li><a href="#">SEARCH</a></li>
-            <li><a href="Feedback.jsp">FEEDBACK</a></li>
-            <li><a href="index.jsp">LOGOUT</a></li>
+           
+            <li><a href=""></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+             <li><a href=""></a></li>
           </ul>
            
         </div>
         
       </div>
         <div class="mainbar">
-             
+            
             <div class="article"> 
-                <div>
-                    <h1 style="color:black; ">HEY USER,</H1>
-                    <BR>
-                    <BR>
-                    <h2 style=" text-align: center; color:lightblueblue;  ">YOU HAVE </h2>
-                     <h2 style="text-align: center; color:lightblueblue">SUCCESSFULLY </h2>
-                      <h2 style="text-align: center; color:lightblueblue">LOGGED IN </h2>
-                      <BR>
-                      <BR>
-                      <BR>
-                      <form action="index.jsp" method="post">
-                           <button style="font-size:30px" type="submit">YOU CAN BEGIN YOUR SEARCH</button>
-                           <BR>
-                           <BR>
-                        
-                      </form>
-                    
-                </div>
-                   </div>
+                 
+                 
+                 
+        
+        <form action="LoginServlet" method="post">
+          
+            <br><br>
+            
+            <label style="font-size: 30px">USER EMAIL <br></label><input type="email" name="username" required><br>
+        <br>
+        <br>
+        <label style="font-size: 30px">PASSWORD <br></label><input type="password" name="password" required><br>
+        <br>
+        <br>
+        <button style="font-size:30px" type="submit">LOGIN</button>
+        </form>
+               
+            </div>
         </div>
           
+        
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">

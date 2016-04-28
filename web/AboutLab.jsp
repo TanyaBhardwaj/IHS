@@ -4,6 +4,10 @@
     Author     : Tanya
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +23,16 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
-
+<%
+              String workplaceid=request.getParameter("workplace_id");
+              Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              String query="select workplace.workplace_id workplace_name,workplace_photo, workplace_type, workplace_ownership,workplace_spec,workplace_about,branch_contact,workplace_website ,branch_state,branch_city,branch_contact from workplace inner join branch on branch.workplace_id=workplace.workplace_id where workplace.workplace_id=?";
+              PreparedStatement GetDocInfo=conn.prepareStatement(query);
+                GetDocInfo.setString(1, workplaceid);
+                  ResultSet DocInfo=GetDocInfo.executeQuery();
+                  DocInfo.first();
+                  %>
     <style>
          .main{
             background-image: none;
@@ -74,23 +87,33 @@
                      
                      
                      <br>
-                     <form action="HospFeedback.jsp" method="post">
+                     <form action="WorkplaceFeedback.jsp" method="post">
+                         <input type="hidden" name="workplace_id" value="<%=workplaceid%>">
+                     <button style="font-size:25px" type="submit">POST FEEDBACK</button>
+                     </form>
+                     <br>
+                     <br>
+                       <form action="ReadFeedback.jsp" method="post">
+                         <input type="hidden" name="workplace_id" value="<%=workplaceid%>">  
                      <button style="font-size:25px" type="submit">READ FEEDBACK</button>
                      </form>
+                     <br>
+                     <br>
                      <form action="WorkplaceBranches.jsp" method="post">
+                          <input type="hidden" name="workplace_id" value="<%=workplaceid%>">  
                      <button style="font-size:25px" type="submit">BRANCHES</button>
                      </form>
                      
         <div class="clr"></div>
         <div class="gadget">
             
-          <div class="clr"></div>
-          <div class="sb_menu">
+        <div class="clr"></div>
+        <div class="sb_menu">
              
            
         </div>
         
-      </div>
+        </div>
         </div>
         <div class="mainbar">
             <div class="article"> 
@@ -101,22 +124,42 @@
                
                     </td> 
                        
-                    <td>NAME:</td>
+                      
+                    <td>NAME: <%=DocInfo.getString("workplace_name")%> </td>
            </tr>
           
                  <tr style="border: 1px solid black">
-                 <td>ABOUT DOCTOR: </td> 
+                 <td>ABOUT WORKPLACE: <%=DocInfo.getString("workplace_about")%> </td> 
+                 </TR>  
+                 <tr style="border: 1px solid black">
+                 <td>STATE: <%=DocInfo.getString("branch_state")%> </td> 
+                 </TR>  
+                 <tr style="border: 1px solid black">
+                 <td>CITY: <%=DocInfo.getString("branch_city")%> </td> 
+                 </TR>  
+          
+          
+                 <tr style="border: 1px solid black">
+                 <td>TYPE: <%=DocInfo.getString("workplace_type")%> </td> 
+                 </TR>  
+                 <tr style="border: 1px solid black">
+                 <td>ABOUT WORKPLACE: <%=DocInfo.getString("workplace_about")%> </td> 
+                 </TR>  
+          
+          
+          <tr style="border: 1px solid black">
+                 <td>SPECIALIZATION: <%=DocInfo.getString("workplace_spec")%> </td> 
                  </TR>  
           
                     <tr style="border: 1px solid black">
-                        <TD> WEBSITE: 
+                        <TD> OWNERSHIP: <%=DocInfo.getString("workplace_ownership")%> 
                
                     </td>
                     
            </tr>
            </tr>
                  <tr style="border: 1px solid black">
-                 <td>CONTACT: 
+                 <td>CONTACT: <%=DocInfo.getString("branch_contact")%> 
                
                     </td> 
                    
@@ -135,10 +178,9 @@
       <p class="rf">Design by Dream <a href="http://www.dreamtemplate.com/">Web Templates</a></p>
       <div style="clear:both;"></div>
     </div>
-  </div>
-  
-        </div>
-        </div>
-          </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </body>
 </html>

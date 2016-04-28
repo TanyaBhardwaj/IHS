@@ -89,18 +89,7 @@
                <th>EMAIL</th>
                <td><input type="text" name="email"><br><br></td>
            </tr>
-           <tr>
-               <th>CONTACT NO:</th>
-               <td><input type="number" name="contact"></br><br></td>
-           </tr>
-           <tr>
-               <th><b>PASSWORD</b></th>
-               <td><input type="password" name="password"></br></br></td>
-           </tr>
-           <tr>
-               <th> RETYPE PASSWORD</th>
-               <td><input type="password" name="RPassword"> </br></br></td>
-           </tr>
+           
            <br>
            <br>
        </table>

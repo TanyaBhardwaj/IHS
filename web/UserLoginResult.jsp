@@ -1,9 +1,6 @@
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-w<%-- 
-    Document   : FeedbackGiven
-    Created on : 22 Mar, 2016, 12:38:57 AM
+<%-- 
+    Document   : UserLogin
+    Created on : 21 Mar, 2016, 12:39:30 PM
     Author     : Tanya
 --%>
 
@@ -12,7 +9,6 @@ w<%--
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,19 +19,7 @@ w<%--
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
-  <%
-              session=request.getSession();
-                String workplacefeedback=request.getParameter("workplace_id");
-              Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-              String query="insert into user_feedback(workplace_id,user_id,feedback) value(?,?,?) ";
-              PreparedStatement AddUser=conn.prepareStatement(query);
-                AddUser.setString(1,workplacefeedback);
-                AddUser.setString(2, session.getAttribute("user_id").toString());
-                 AddUser.setString(3, request.getParameter("comments"));
-                AddUser.executeUpdate();
-                  %> 
-<style>
+    <style>
          .main{
             background-image: none;
             background-color: black;
@@ -43,23 +27,24 @@ w<%--
     </style>
     </head>
     <body>
-         <div class="main">
+        <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>Home</span></a></li>
-          <li><a href="login.jsp"><span>Login</span></a></li>
-          <li><a href="register.jsp"><span>Register</span></a></li>
-          <li><a href="contact.jsp"><span>Contact Us</span></a></li>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
         </ul>
-            <br>
+           <br>
           <ul>
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
               <li>    <a href="#"><span>DISEASES</span></a></li>
-              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
+              <li> <a href="feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
+              
       </div>
       <div class="logo">
           <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
@@ -68,48 +53,49 @@ w<%--
     </div>
   </div>
             <div class="content">
+               
     <div class="content_resize">
+        
         <div class="sidebar">
         <div class="clr"></div>
         <div class="gadget">
-            <h2 class="star"> <span></span> </h2>
+            <h2 class="star"> <span>MENU</span> </h2>
           <div class="clr"></div>
           <ul class="sb_menu">
-              
-          
-            <li><a href=""></a></li>
-             <li><a href=""></a></li>
-             <li><a href="#"</a></li>
+            
+            <li><a href="UserProfile.jsp">YOUR PROFILE</a></li>
+            <li><a href="index.jsp">SEARCH</a></li>
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+            <li><a href="index.jsp">LOGOUT</a></li>
           </ul>
-         
+           
         </div>
         
       </div>
         <div class="mainbar">
+             
             <div class="article"> 
                 <div>
-                    <h1 style="color:black; ">THANKYOU USER!!!</H1>
+                    <h1 style="color:black; ">HEY USER,</H1>
                     <BR>
                     <BR>
-                    <h2 style=" text-align: center; color:lightblueblue;  ">YOUR</h2>
-                     <h2 style="text-align: center; color:lightblueblue">FEEDBACK </h2>
-                      <h2 style="text-align: center; color:lightblueblue">WILL HELP US PROVIDE </h2>
-                       <h2 style="text-align: center; color:lightblueblue">BETTER SERVICE IN FUTURE </h2>
+                    <h2 style=" text-align: center; color:lightblueblue;  ">YOU HAVE </h2>
+                     <h2 style="text-align: center; color:lightblueblue">SUCCESSFULLY </h2>
+                      <h2 style="text-align: center; color:lightblueblue">LOGGED IN </h2>
                       <BR>
                       <BR>
                       <BR>
                       <form action="index.jsp" method="post">
-                           <button style="font-size:30px" type="submit">CONTINUE YOUR SEARCH</button>
-                            <button style="font-size:30px" type="submit">LOGOUT</button>
+                           <button style="font-size:30px" type="submit">YOU CAN BEGIN YOUR SEARCH</button>
                            <BR>
                            <BR>
                         
                       </form>
+                    
+                </div>
                    </div>
-            </div>
         </div>
           
-        
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">

@@ -25,6 +25,21 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
+<%
+             session=request.getSession(); 
+    int edit_flag=0;
+              if(request.getParameter("edit_flag")!=null)
+              {
+                  edit_flag=Integer.parseInt(request.getParameter("edit_flag"));
+              }
+              Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              PreparedStatement GetDocInfo=conn.prepareStatement("select workplace_name, workplace_email,workplace_type,workplace_ownership,workplace_spec,workplace_about,workplace_website from workplace where workplace_id=? ;");
+               GetDocInfo.setString(1, session.getAttribute("workplace_id").toString());
+              ResultSet DocInfo=GetDocInfo.executeQuery();
+              DocInfo.first();
+    
+%>
     <style>
          .main{
             background-image: none;
@@ -77,7 +92,6 @@ function abortHandler(event){
 	_("status").innerHTML = "Upload Aborted";
 }
     </script>
-    </style>
     </head>
     <body>
         <div class="main">
@@ -99,7 +113,7 @@ function abortHandler(event){
           </UL>
       </div>
       <div class="logo">
-          <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
+          <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
       </div>
       <div class="clr"></div>
     </div>
@@ -115,7 +129,7 @@ function abortHandler(event){
             <h2 class="star"> <span>SERVICES</span> </h2>
           <div class="clr"></div>
           <ul class="sb_menu">
-             <li><a href="WorkplaceBranches,jsp">ADD BRANCHES</a></li>
+             <li><a href="WorkplaceBranches.jsp">ADD BRANCHES</a></li>
             
             <li><a href="Feedback.jsp">GIVE YOUR FEEDBACK</a></li>
             <li><a href="index.jsp">LOGOUT</a></li>
@@ -130,32 +144,37 @@ function abortHandler(event){
               
                   <h1 style="color:black;align-content: center "></H1>
                   <BR>
+                  <form action="WorkplaceProfile.jsp" method="get">
+                      <input type="hidden" name="edit_flag" value="1">
                   <button style="font-size:25px" type="submit">EDIT YOUR PROFILE</button>
-             
+                  </form>
+
                     <BR>
                     <BR>
-           <form id="upload_form" enctype="multipart/form-data" method="post">
+       
                         <table>
                             <tr style="border: 1px solid black">
                                 <td>
                                     <BR>
                                     <BR>
+                                     <% if(edit_flag==1)
+                                    {
+                                     %>
                                                  <form id="upload_form" enctype="multipart/form-data" method="post">
                                     <input type="file" name="file" id="file1"><BR>
   <input type="button" value="UPLOAD PHOTO" onclick="uploadFile()">
   <progress id="progressBar" value="0" max="100" style="width:100px;"></progress>
   <h3 id="status"></h3>
   <p id="loaded_n_total"></p></form>
+  <% } %>
                                 </td>
                                 <td>
                     <%
-                        Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+                      
                         PreparedStatement ShowPhoto=conn.prepareStatement("select workplace_photo from workplace where workplace_id=?");
       ShowPhoto.setInt(1, 1);
       ResultSet Photos=ShowPhoto.executeQuery();
-      if(Photos.first())
-      {
+   Photos.first();
       Blob image=Photos.getBlob("workplace_photo");
       if(image!=null)
       {
@@ -163,60 +182,57 @@ function abortHandler(event){
         String imgDataBase64=new String(Base64.getEncoder().encode(imgData)); 
         out.println("<img src='data:image/png;base64,"+imgDataBase64+"' width=100 height=100 />");
       }
-      }
                     %>                
                                 </td>
-                                 <td>  <textarea rows="4" cols="30">
+                                 <td> 
+                                  <%
+                                      if(edit_flag==1)
+                                     { %>
 
-                        </textarea> </td>
+                         <form action="WorkplaceAbout" method="post">
+                                         <textarea rows="4" name="about_me" cols="30">
+                                         <%=DocInfo.getString("workplace_about") %>
+                        </textarea>
+                        <button type="submit">Save About Me</button>
+                                     </form>
+                                 <% }
+                                    else
+                                    {
+                                 %>
+                                 <p><%=DocInfo.getString("workplace_about") %></p>
+                                     <%
+}
+%></td>
+                                    
        </tr>
                         </table>
-</form> 
+               <% if(edit_flag==1)
+               { %>
+                   
+                       
                           
                     
-                <form action="WorkplaceProfile" method="post">         
+                <form action="UpdateWorkplace" method="post">         
   <table>
        
-        <tr style="border: 1px solid black">
-           
-               <td> STATE:<select name="Type">
-               <option value="karnataka">Karnataka</option>
-                <option value="punjab">Punjab</option>
-                <option value="Kerela">Kerela</option>
-                   </select>  </td>
-
-               <td> CITY:<select name="Type">
-               <option value="Delhi">Delhi</option>
-                <option value="Banglore">Banglore</option>
-                <option value="Amritsar">Amritsar</option>
-                <option value="Gurgaon">Gurgaon</option>
-                <option value="Rajisthan">Rajisthan</option>
-                <option value="Jalandhar">Jalandhar</option>
-                <option value="Ludhiana">Ludhiana</option>
-                
-                   </select>  </td> 
-  </tr>
-  <br>
-   <tr style="border: 1px solid black">
-  <th>ADDRESS: </th>
-   <td>  <textarea rows="4" cols="30">
-
-                        </textarea> </td>
-  </tr>
-   <tr style="border: 1px solid black">
-      <th>AREA:</th>
-       <td>  <textarea rows="2" cols="30">
-
-                        </textarea> </td>
-  </tr>
-   <tr style="border: 1px solid black">
+  <tr style="border: 1px solid black">
       <th>TYPE </th>
       <td>
-           <form>
-  <input type="radio" name="type" value="government">GOVERNMENT
-  <input type="radio" name="type" value="private">PRIVATE
+          <select name="type">
+              <option value="hospital">Hospital</option>
+              <option value="Clinic">Clinic</option>
+              <option value="Lab">Lab</option>
+          </select>
+  
+      </td>
+  </tr>
+   <tr style="border: 1px solid black">
+      <th>OWNERSHIP </th>
+      <td>
+          
+  <input type="radio" name="ownership" value="government">GOVERNMENT
+  <input type="radio" name="ownership" value="private">PRIVATE
  
-</form> 
       </td>
   </tr>
    <tr style="border: 1px solid black">
@@ -236,7 +252,41 @@ function abortHandler(event){
                     <br>
    <button style="font-size:25px" type="submit">SAVE</button>
    <button style="font-size:25px" type="reset">CANCEL</button> 
-   </form>      
+   </form> 
+                         <% }
+                            else
+{
+                        %>
+                        <table>
+       
+        
+   <tr style="border: 1px solid black">
+      <th>TYPE </th>
+      <td>
+          <label><%=DocInfo.getString("workplace_type")%>  </label> 
+      </td>
+  </tr>
+  <tr style="border: 1px solid black">
+      <th>OWNERSHIP </th>
+      <td>
+          <label><%=DocInfo.getString("workplace_ownership")%>  </label> 
+      </td>
+  </tr>
+   <tr style="border: 1px solid black">
+      <th>TIMINGS</th>
+       <td>  <textarea rows="1" cols="30">
+
+                        </textarea> </td>
+  </tr>
+    <tr style="border: 1px solid black">
+      <th>WEBSITE</th>
+      <td>  <a href="<%=DocInfo.getString("workplace_website")%>"><%=DocInfo.getString("workplace_website")%></a> </td>
+  </tr>
+  <br>
+                        </table>
+                        <%
+}
+%>    
           </div>
         </div>
           

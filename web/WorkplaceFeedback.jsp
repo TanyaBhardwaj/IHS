@@ -1,6 +1,6 @@
 <%-- 
-    Document   : WorkplaceLogin
-    Created on : 23 Mar, 2016, 11:49:49 AM
+    Document   : HospFeedback
+    Created on : 22 Mar, 2016, 1:21:49 AM
     Author     : Tanya
 --%>
 
@@ -9,8 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <title>Indian Health Services</title>
+         <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -20,16 +19,17 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
-    <style>
+  
+<style>
          .main{
-            background-image: none;
-            background-color: black;
+         background-image: none;
+        
+          background-color: black;
         }
     </style>
     </head>
     <body>
-         
-        <div class="main">
+       <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
@@ -38,9 +38,8 @@
           <li><a href="login.jsp"><span>LOGIN</span></a></li>
           <li><a href="register.jsp"><span>REGISTER</span></a></li>
           <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-          
         </ul>
-          <br>
+           <br>
           <ul>
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
@@ -49,7 +48,7 @@
           </UL>
       </div>
       <div class="logo">
-          <h1><a href="index.html"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
+          <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
       </div>
       <div class="clr"></div>
     </div>
@@ -63,36 +62,35 @@
           <div class="clr"></div>
           <ul class="sb_menu">
            
-            <li><a href=""></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-             <li><a href=""></a></li>
-          </ul>
-           
+              <li><a href=""><span></span></a></li>
+              <li>  <a href="#"><span></span></a></li>
+              <li>    <a href="#"><span></span></a></li>
+              <li> <a href=""><span></span></a></li>
+          </UL>
         </div>
         
       </div>
         <div class="mainbar">
-            
             <div class="article"> 
                  
-                 
-                 
-        
-        <form action="WorkplaceLoginServlet" method="post">
-          
-            <br><br>
-            
-            <label style="font-size: 30px">USER EMAIL <br></label><input type="email" name="username" required><br>
-        <br>
-        <br>
-        <label style="font-size: 30px">PASSWORD <br></label><input type="password" name="password" required><br>
-        <br>
-        <br>
-        <button style="font-size:30px" type="submit">LOGIN</button>
-        </form>
-               
+                 <form action="FeedbackGiven.jsp" method="post">  
+                     <input type="hidden" name="workplace_id" value="<%=request.getParameter("workplace_id")%>"
+                     <table>
+                        
+  <tr>                  
+      <th>COMMENTS:</th>
+      <td><textarea id="message" name="comments" rows="6" cols="40"></textarea> </td>
+  </tr>
+  
+   <br>
+   <br>
+   </table>
+                     <button style="font-size:30px" type="submit">POST</button>
+                 </FORM>
+                     <BR>
+                   
+                     
+              
             </div>
         </div>
           

@@ -86,7 +86,7 @@ public class RegUserServlet extends HttpServlet {
               String email,password,server,port;
         String t_address=Email;
         String msgtext="You are successfully registered in IHS." 
-                + "Login to begin your search your password is"+new String(Password);
+                + "Login to begin your search.Your password is"+new String(Password);
         email="tbjune7@gmail.com";
         password="1234567890@123";
         server="smtp.gmail.com";

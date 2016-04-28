@@ -72,12 +72,12 @@
         <div class="mainbar">
             <div class="article"> 
                  
-                 <form action="RegUser" method="post">  
+                 <form action="WebsiteFeedbackGiven.jsp" method="post">  
                     <table>
                         <tr>                                          
                             <th>NAME:</th>
                             <td> <input type="text" name="name"><br><br></td>
-                             </tr>
+                        </tr>
   <tr>                  
       <th>HOW WAS YOUR EXPERIENCE:</th>
       <td><input type="text" name="experience"><br><br></td>
@@ -88,11 +88,11 @@
   </tr>
   <tr>
       <th>ANY RECOMMENDATIONS?</th>
-      <td><input type="password" name="recommendation"><br><br></td>
+      <td><input type="text" name="recommendation"><br><br></td>
   </tr>
   <tr>
       <th>RATE OUR WEBSITE:</th>
-      <td><input type="password" name="rate"><br><br></td>
+      <td><input type="text" name="rate"><br><br></td>
    </tr>
    <br>
    <br>

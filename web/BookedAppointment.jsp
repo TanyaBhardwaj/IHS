@@ -1,6 +1,6 @@
 <%-- 
-    Document   : YourFeedback
-    Created on : 22 Mar, 2016, 12:32:26 AM
+    Document   : BookedAppointment
+    Created on : 28 Apr, 2016, 3:49:21 PM
     Author     : Tanya
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,14 +21,13 @@
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
     <style>
          .main{
-         background-image: none;
-        
-          background-color: black;
+            background-image: none;
+            background-color: black;
         }
     </style>
     </head>
     <body>
-        <div class="main">
+       <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
@@ -43,8 +42,9 @@
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
               <li>    <a href="#"><span>DISEASES</span></a></li>
-              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
+              <li> <a href="feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
+              
       </div>
       <div class="logo">
           <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
@@ -53,47 +53,57 @@
     </div>
   </div>
             <div class="content">
+               
     <div class="content_resize">
+        
         <div class="sidebar">
         <div class="clr"></div>
         <div class="gadget">
-            <h2 class="star"> <span></span> </h2>
+            <h2 class="star"> <span>MENU</span> </h2>
           <div class="clr"></div>
           <ul class="sb_menu">
+            
+            <li><a href="DoctorProfile.jsp">YOUR PROFILE</a></li>
+            <li><a href="index.jsp">SEARCH</a></li>
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+            <li><a href="index.jsp">LOGOUT</a></li>
+          </ul>
            
-              <li><a href=""><span></span></a></li>
-              <li>  <a href="#"><span></span></a></li>
-              <li>    <a href="#"><span></span></a></li>
-              <li> <a href=""><span></span></a></li>
-          </UL>
         </div>
         
       </div>
         <div class="mainbar">
+             
             <div class="article"> 
-                 
-                 <form action="FeedbackGiven.jsp" method="post">  
-                    <table>
-                        <tr>                                          
-                            <th>USER:</th>
-                            <td> <textarea id="message" name="COMMENTS" rows="1" cols="40"></textarea> </td>
-                             </tr>
-  <tr>                  
-      <th>COMMENTS:</th>
-      <td><textarea id="message" name="COMMENTS" rows="6" cols="40"></textarea> </td>
-  </tr>
-  
-   <br>
-   <br>
-   </table>
-                     <BR>
-  
-                     <button style="font-size:30px" type="submit">POST</button>
-</form>                 
-            </div>
+                <div>
+                    <h1 style="color:black; ">HEY USER,</H1>
+                    <BR>
+                    <BR>
+                    <h2 style=" text-align: center; color:lightblueblue"> THANKYOU FOR USING OUR WEBSITE :)</h2>
+                     <h2 style="text-align: center; color:lightblueblue">HOPE WE SERVED YOU WELL </h2>
+                      <h2 style="text-align: center; color:lightblueblue">Please give your feedback so that we can serve you well</h2>
+                      <BR>
+                      <BR>
+                      <BR>
+                      <form action="Feedback.jsp" method="post">
+                          <button style="font-size:30px" type="submit">GIVE YOUR FEEDBACK ABOUT OUR WEBSITE</button>
+                      </form>
+                      <BR>
+                      <form action="index.jsp" method="post">
+                           <button style="font-size:30px" type="submit">YOU CAN CONTINUE YOUR SEARCH</button>
+                           <BR>
+                           <BR>
+                           <button style="font-size:30px" type="logout">LOGOUT</button>
+                           
+                           <BR>
+                           <BR>
+                        
+                      </form>
+                    
+                </div>
+                   </div>
         </div>
           
-        
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">

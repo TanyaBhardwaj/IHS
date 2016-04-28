@@ -7,18 +7,25 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Tanya
  */
-@WebServlet(name = "UserProfile", urlPatterns = {"/UserProfile"})
-public class UserProfile extends HttpServlet {
+@WebServlet(name = "WorkplaceAbout", urlPatterns = {"/WorkplaceAbout"})
+public class WorkplaceAbout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,20 +37,29 @@ public class UserProfile extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String about_me=request.getParameter("about_me");
+            
+            HttpSession session=request.getSession();
+            Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              PreparedStatement UpdateProfile=conn.prepareStatement("update workplace set workplace_about=? where workplace_id=?");
+              UpdateProfile.setString(1, about_me);
+              UpdateProfile.setString(2, session.getAttribute("workplace_id").toString());
+              UpdateProfile.executeUpdate();
+              response.sendRedirect("WorkplaceProfile.jsp");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserProfile</title>");            
+            out.println("<title>Servlet WorkplaceAbout</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserProfile at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet WorkplaceAbout at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            response.sendRedirect("UserProfile.jsp");   
         }
     }
 
@@ -59,7 +75,13 @@ public class UserProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WorkplaceAbout.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(WorkplaceAbout.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,7 +95,13 @@ public class UserProfile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WorkplaceAbout.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(WorkplaceAbout.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

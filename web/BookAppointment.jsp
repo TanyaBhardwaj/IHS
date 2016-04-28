@@ -4,6 +4,12 @@
     Author     : Tanya
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,6 +37,13 @@
              border: solid 1px black;
         }
     </style>
+    <%
+        
+         Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+            Calendar cal=Calendar.getInstance();
+            int i=0;
+        %>
     </head>
     <body>
          <div class="main">
@@ -69,7 +82,7 @@
           
             <li><a href=""></a></li>
              <li><a href=""></a></li>
-             <li><a href="#"</a></li>
+             <li><a href="#"></a></li>
           </ul>
          
         </div>
@@ -81,158 +94,102 @@
             <tr>`
             <th>DATE</th><th>MORNING</th><th>AFTERNOON</th><th>EVENING</th>
             </tr>
+            <% 
+                for(i=0;i<15;i++)
+                {
+                    cal.add(Calendar.DAY_OF_MONTH, i);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                        
+                
+            %>
             <tr>
-                <td>22/03/2016</td><td>
+                <td>
+                    <% 
+                    
+            out.println(format1.format(cal.getTime()));
+                    %>
+                </td><td>
                     <table>
-                        <tr>
-                            <td>9:00 to 9:10</td><td><button>BOOK</button></td>
+                        <% PreparedStatement getmslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='morning' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
+            getmslots.setString(1, "1");
+            getmslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
+            ResultSet mslots=getmslots.executeQuery();
+                            while(mslots.next())
+                        { 
+                           %>
+                           <tr>
+                               <td><%=mslots.getString("start_time")%></td>
+                               <td><%=mslots.getString("end_time")%></td>
+                               
+                                       <td><form action="AppointmentServlet">
+                                               <input type="hidden" name="slot_id" value="<%=mslots.getString("slot_id")%>">
+                                               <input type="hidden" name="appointment_date" value="<%=cal.getTimeInMillis()%>">
+                                               <button>BOOK</button>
+                                   </form>
+                                   </td>
                         </tr>
-                        <tr>
-                            <td>9:15 to 9:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>9:30 to 9:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>10:50 to 11:00</td><td><button>BOOK</button></td>
-                        </tr>
+                        <% 
+                        }%>
+                        
+                        
                     </table>
                 </td>
                 <td>
                     <table>
-                        <tr>
-                           <td>3:00 to 3:10</td><td><button>BOOK</button></td>
+                        <% PreparedStatement getaslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='afternoon' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
+            getaslots.setString(1, "1");
+            getaslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
+            ResultSet aslots=getaslots.executeQuery();
+                            while(aslots.next())
+                        { 
+                           %>
+                           <tr>
+                               <td><%=aslots.getString("start_time")%></td>
+                               <td><%=aslots.getString("end_time")%></td>
+                               
+                                       <td><form action="AppointmentServlet">
+                                               <input type="hidden" name="slot_id" value="<%=aslots.getString("slot_id")%>">
+                                               <input type="hidden" name="appointment_date" value="<%=cal.getTimeInMillis()%>">
+                                               <button>BOOK</button>
+                                   </form>
+                                   </td>
                         </tr>
-                        <tr>
-                            <td>3:15 to 3:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:30 to 3:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:50 to 4:00</td><td><button>BOOK</button></td>
-                        </tr>
+                        <% 
+                        }%>
+                        
+                        
                     </table>
                 </td>
                 <td>
                     <table>
-                        <tr>
-                            <td>7:00 to 7:10</td><td><button>BOOK</button></td>
+                        <% PreparedStatement geteslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='evening' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
+            geteslots.setString(1, "1");
+            geteslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
+            ResultSet eslots=geteslots.executeQuery();
+                            while(eslots.next())
+                        { 
+                           %>
+                           <tr>
+                               <td><%=eslots.getString("start_time")%></td>
+                               <td><%=eslots.getString("end_time")%></td>
+                               
+                                       <td><form action="AppointmentServlet">
+                                               <input type="hidden" name="slot_id" value="<%=eslots.getString("slot_id")%>">
+                                               <input type="hidden" name="appointment_date" value="<%=cal.getTimeInMillis()%>">
+                                               <button>BOOK</button>
+                                   </form>
+                                   </td>
                         </tr>
-                        <tr>
-                            <td>7:15 to 7:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:30 to 7:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:50 to 8:00</td><td><button>BOOK</button></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>23/03/2016</td><td>
-                    <table>
-                        <tr>
-                            <td>9:00 to 9:10</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>9:15 to 9:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>9:30 to 9:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>10:50 to 11:00</td><td><button>BOOK</button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                           <td>3:00 to 3:10</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:15 to 3:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:30 to 3:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:50 to 4:00</td><td><button>BOOK</button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>7:00 to 7:10</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:15 to 7:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:30 to 7:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:50 to 8:00</td><td><button>BOOK</button></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>24/03/2016</td><td>
-                    <table>
-                        <tr>
-                            <td>9:00 to 9:10</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>9:15 to 9:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>9:30 to 9:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>10:50 to 11:00</td><td><button>BOOK</button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                           <td>3:00 to 3:10</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:15 to 3:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:30 to 3:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>3:50 to 4:00</td><td><button>BOOK</button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>7:00 to 7:10</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:15 to 7:25</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:30 to 7:40</td><td><button>BOOK</button></td>
-                        </tr>
-                        <tr>
-                            <td>7:50 to 8:00</td><td><button>BOOK</button></td>
-                        </tr>
+                        <% 
+                        }%>
+                        
                         
                     </table>
                 </td>
             </tr>
-        </table>
+            <% } %>
+                
+           </table>
                 <BR>
                 <BR>
                 <div>

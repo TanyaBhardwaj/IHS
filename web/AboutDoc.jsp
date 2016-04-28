@@ -4,6 +4,10 @@
     Author     : Tanya
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +23,16 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
-
+<%
+              String docid=request.getParameter("doc_id");
+              Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              String query="select doc_name,doc_photo, doc_about,doc_state,doc_city,doc_phone,doc_email ,doc_category,doc_spec,doc_qual,doc_exp from doctor where doc_id=? ";
+              PreparedStatement GetDocInfo=conn.prepareStatement(query);
+                GetDocInfo.setString(1, docid);
+                  ResultSet DocInfo=GetDocInfo.executeQuery();
+                  DocInfo.first();
+                  %>
     <style>
          .main{
             background-image: none;
@@ -76,9 +89,7 @@
               </form>
                      <br>
                      <br>
-                     <form action="DocFeedback.jsp" method="post">
-                     <button style="font-size:25px" type="submit">READ FEEDBACK</button>
-                     </form>
+                    
                      <BR>
                      
                      <form action="DocWorkplaces.jsp" method="post">
@@ -104,27 +115,41 @@
                
                     </td> 
                        
-                    <td>NAME:</td>
+                    <td>NAME:  <%=DocInfo.getString("doc_name")%>  </td>
            </tr>
           
                  <tr style="border: 1px solid black">
-                 <td>ABOUT DOCTOR: </td> 
+                 <td>ABOUT DOCTOR: <%=DocInfo.getString("doc_about")%></td> 
                  </TR>  
           
+                 <tr style="border: 1px solid black">
+                 <td>SPECIALIZATION: <%=DocInfo.getString("doc_spec")%></td> 
+                 </TR>  
+                   <tr style="border: 1px solid black">
+                 <td>CATEGORY: <%=DocInfo.getString("doc_cat")%></td> 
+                 </TR>
+                 
+                 <tr style="border: 1px solid black">
+                 <td>QUALIFICATION: <%=DocInfo.getString("doc_qual")%></td> 
+                 </TR>  
+                 
+                 <tr style="border: 1px solid black">
+                 <td>EXPERIENCE: <%=DocInfo.getString("doc_exp")%></td> 
+                 </TR>  
+                 
+                 <tr style="border: 1px solid black">
+                 <td>STATE: <%=DocInfo.getString("doc_ state")%></td> 
+                 
+                  <td>CITY: <%=DocInfo.getString("doc_ city")%></td> 
+                 </TR>  
                     <tr style="border: 1px solid black">
-                        <TD> WEBSITE: 
-               
+                        <TD> WEBSITE: <%=DocInfo.getString("doc_email")%>
+                <td>CONTACT: <%=DocInfo.getString("doc_phone")%></td> 
                     </td>
                     
            </tr>
-           </tr>
-                 <tr style="border: 1px solid black">
-                 <td>CONTACT: 
-               
-                    </td> 
-                   
-           </tr>
-           
+          
+                 
            </table>
                 </div>
             </div>

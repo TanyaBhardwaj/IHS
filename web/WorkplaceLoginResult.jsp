@@ -1,6 +1,6 @@
 <%-- 
-    Document   : HospFeedback
-    Created on : 22 Mar, 2016, 1:21:49 AM
+    Document   : WorkplaceLoginServlet
+    Created on : 19 Apr, 2016, 12:11:59 AM
     Author     : Tanya
 --%>
 
@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <title>Indian Health Services</title>
         <meta charset="UTF-8">
@@ -21,14 +22,13 @@
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
     <style>
          .main{
-         background-image: none;
-        
-          background-color: black;
+            background-image: none;
+            background-color: black;
         }
     </style>
     </head>
     <body>
-       <div class="main">
+         <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
@@ -43,8 +43,9 @@
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
               <li>    <a href="#"><span>DISEASES</span></a></li>
-              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
+              <li> <a href="feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
+              
       </div>
       <div class="logo">
           <h1><a href="index.jsp"><span>INDIAN HEALTH SERVICES</span> <small style="color:blue;">HELPING MANKIND</small></a></h1>
@@ -53,48 +54,49 @@
     </div>
   </div>
             <div class="content">
+               
     <div class="content_resize">
+        
         <div class="sidebar">
         <div class="clr"></div>
         <div class="gadget">
-            <h2 class="star"> <span></span> </h2>
+            <h2 class="star"> <span>MENU</span> </h2>
           <div class="clr"></div>
           <ul class="sb_menu">
+            
+            <li><a href="WorkplaceProfile.jsp">YOUR PROFILE</a></li>
+            <li><a href="index.jsp">SEARCH</a></li>
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+            <li><a href="index.jsp">LOGOUT</a></li>
+          </ul>
            
-              <li><a href=""><span></span></a></li>
-              <li>  <a href="#"><span></span></a></li>
-              <li>    <a href="#"><span></span></a></li>
-              <li> <a href=""><span></span></a></li>
-          </UL>
         </div>
         
       </div>
         <div class="mainbar">
+             
             <div class="article"> 
-                 
-                 <form action="HospitalFeedback" method="post">  
-                    <table>
-                        <tr>                                          
-                            <th>USER:</th>
-                            <td> <textarea id="message" name="name" rows="1" cols="40"></textarea> </td>
-                             </tr>
-  <tr>                  
-      <th>COMMENTS:</th>
-      <td><textarea id="message" name="COMMENTS" rows="6" cols="40"></textarea> </td>
-  </tr>
-  
-   <br>
-   <br>
-   </table>
-                 </FORM>
-                     <BR>
-                     <FORM ACTION="YourFeedback.jsp" method="post">
-                     <button style="font-size:30px" type="submit">GIVE YOUR FEEDBACK</button>
-              
-            </div>
+                <div>
+                    <h1 style="color:black; ">HEY,</H1>
+                    <BR>
+                    <BR>
+                    <h2 style=" text-align: center; color:lightblueblue;  ">YOU HAVE </h2>
+                     <h2 style="text-align: center; color:lightblueblue">SUCCESSFULLY </h2>
+                      <h2 style="text-align: center; color:lightblueblue">LOGGED IN </h2>
+                      <BR>
+                      <BR>
+                      <BR>
+                      <form action="index.jsp" method="post">
+                           <button style="font-size:30px" type="submit">YOU CAN BEGIN YOUR SEARCH</button>
+                           <BR>
+                           <BR>
+                        
+                      </form>
+                    
+                </div>
+                   </div>
         </div>
           
-        
       <div class="clr"></div>
       <div class="footer">
     <div class="footer_resize">

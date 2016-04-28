@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,11 +52,13 @@ public class WorkplaceLoginServlet extends HttpServlet {
       getUser.setString(1, username);
       getUser.setString(2, password);
       ResultSet users=getUser.executeQuery( );
-      
+        HttpSession session=request.getSession();
       
           if(users.first())
           {
-              response.sendRedirect("WorkplaceLogin.jsp?uid="+users.getString("user_id"));
+              session.setAttribute("workplace_id", users.getString("workplace_id"));
+              response.sendRedirect("WorkplaceProfile.jsp");
+              
           }
       
            

@@ -81,7 +81,7 @@
                  
                  
         
-        <form action="LoginServlet" method="post">
+        <form action="DoctorLoginServlet" method="post">
             
             <br><br>
             

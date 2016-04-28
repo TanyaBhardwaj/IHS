@@ -1,17 +1,17 @@
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-w<%-- 
-    Document   : FeedbackGiven
-    Created on : 22 Mar, 2016, 12:38:57 AM
+<%-- 
+    Document   : WebsiteFeedbackGiven
+    Created on : 28 Apr, 2016, 4:20:22 PM
     Author     : Tanya
 --%>
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
@@ -25,14 +25,13 @@ w<%--
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
   <%
               session=request.getSession();
-                String workplacefeedback=request.getParameter("workplace_id");
+                String workplacefeedback=request.getParameter("user_id");
               Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-              String query="insert into user_feedback(workplace_id,user_id,feedback) value(?,?,?) ";
+              String query="insert into feedback_website(user_id,feedback) value(?,?) ";
               PreparedStatement AddUser=conn.prepareStatement(query);
-                AddUser.setString(1,workplacefeedback);
-                AddUser.setString(2, session.getAttribute("user_id").toString());
-                 AddUser.setString(3, request.getParameter("comments"));
+                AddUser.setString(1, session.getAttribute("user_id").toString());
+                 AddUser.setString(2, request.getParameter("comments"));
                 AddUser.executeUpdate();
                   %> 
 <style>
@@ -43,15 +42,15 @@ w<%--
     </style>
     </head>
     <body>
-         <div class="main">
+          <div class="main">
   <div class="header">
     <div class="header_resize">
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.jsp"><span>Home</span></a></li>
-          <li><a href="login.jsp"><span>Login</span></a></li>
-          <li><a href="register.jsp"><span>Register</span></a></li>
-          <li><a href="contact.jsp"><span>Contact Us</span></a></li>
+          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
+          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
         </ul>
             <br>
           <ul>

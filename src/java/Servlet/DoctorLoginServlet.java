@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -52,11 +53,12 @@ public class DoctorLoginServlet extends HttpServlet {
       getUser.setString(1, username);
       getUser.setString(2, password);
       ResultSet users=getUser.executeQuery( );
-      
+      HttpSession session=request.getSession();
       
           if(users.first())
           {
-              response.sendRedirect("DoctorLogin.jsp?uid="+users.getString("user_id"));
+              session.setAttribute("doc_id", users.getString("doc_id"));
+              response.sendRedirect("DoctorProfile.jsp");
           }
       
            

@@ -25,6 +25,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -56,12 +57,14 @@ public class DocProfileServlet extends HttpServlet {
   //          File upload_file=new File(upload_dir,filename);
     //        Files.copy(fileContent, upload_file.toPath());
             try {
+                 HttpSession session=request.getSession();
                 Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
       PreparedStatement AddPhoto=conn.prepareStatement("update doctor set doc_photo=? where doc_id=?");
       AddPhoto.setBlob(1, fileContent);
       AddPhoto.setInt(2, 1);
       AddPhoto.executeUpdate();
+      
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DocProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
             }

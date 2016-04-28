@@ -8,6 +8,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,40 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
-
+<%
+              String cat=request.getParameter("cat");
+              String type=request.getParameter("type");
+              Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              String query="select workplace.workplace_id, workplace_name, workplace_type,workplace_spec,branch_state,branch_city from workplace inner join branch on branch.workplace_id=workplace.workplace_id where workplace_type=? and workplace_spec=? ";
+              PreparedStatement GetDocInfo=conn.prepareStatement(query);
+                GetDocInfo.setString(1, type);
+                GetDocInfo.setString(2, cat);
+                
+                
+              
+              //DocInfo.first();
+              Connection wconn=DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "tanyabhardwaj");
+              if(request.getParameter("state")!=null)
+              {
+                query+=" and branch_state=? ";
+                GetDocInfo=conn.prepareStatement(query);
+                GetDocInfo.setString(1, type);
+                GetDocInfo.setString(2, cat);
+                GetDocInfo.setString(3, request.getParameter("state"));
+              }
+              if(request.getParameter("city")!=null)
+              {
+                query+=" and branch_city=?";
+                GetDocInfo=conn.prepareStatement(query);
+                GetDocInfo.setString(1, type);
+                GetDocInfo.setString(2, cat);
+                GetDocInfo.setString(3, request.getParameter("city"));
+              }
+              
+              ResultSet DocInfo=GetDocInfo.executeQuery();
+    
+%>
     <style>
          .main{
             background-image: none;
@@ -58,13 +92,13 @@
               <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
               <%
-                  Class.forName("com.mysql.jdbc.Driver");
+/*                  Class.forName("com.mysql.jdbc.Driver");
        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
        
       PreparedStatement getUser=conn.prepareStatement("Select branch_city,branch_area,branch_timing from ihs.branch where branch_city=?,branch_area and branch_timing=?");
             
       ResultSet users=getUser.executeQuery( );
-      
+  */    
                   %>
               
       </div>
@@ -82,43 +116,61 @@
     <div class="content_resize">
            
         <div class="sidebar">
-             <div>
-                 <form action="WorkplaceSearch.jsp" method="get">
+              <%
+                    Statement getState=wconn.createStatement();
+                    ResultSet states=getState.executeQuery("select District from City where CountryCode='IND'");
+                    
+                    %>
+                
                      
                 
                    <table>
                 <tr>           
-                    <td>CITY:<select name="Type">                   
-                <option value="bangalore">BANGALORE</option>
-                <option value="punjab">DELHI</option>
-                <option value="kerela">KOLKATA</option>
-                 <option value="punjab">MUMBAI</option>
-                  <option value="punjab">PUNJAB</option>
-                   </select>  </td> 
-                   
+                    <td> <form action="WorkplaceSearch.jsp" method="get">
+                            <input type="hidden" name="cat" value="<%=cat%>">
+                            <input type="hidden" name="type" value="<%=type%>">
+                            State:<select name="state">
+                                <% while(states.next())
+                            {
+                               %>
+               <option value="<%=states.getString("District")%>"><%=states.getString("District")%></option>
+                            <% 
+                            }%>
+                        </select>
+                        <button type="submit">Apply Filter</button>
+                        </form>  </td>
              </TR>
         
              <tr style="border: 1px solid black">
-                 <td> AREA: <select name="Type">
-               <option value="k">k</option>
-                <option value="l">P</option>
-                <option value="m">l</option>
-                <option value="n">l</option>
-                <option value="o">l</option>
-                <option value="p">l</option>
-                <option value="q">l</option>
-                <option value="r">l</option>
-                <option value="s">l</option>
-                <option value="t">l</option>
-                   </select>  </td> 
+                 <%
+                    
+                     PreparedStatement getCity=wconn.prepareStatement("select `Name` from City where District=?");
+                    getCity.setString(1, request.getParameter("state"));
+                    ResultSet cities=getCity.executeQuery();
+                     %>
+                 <td><form action="WorkplaceSearch.jsp" method="get"> 
+                         <input type="hidden" name="cat" value="<%=cat%>">
+                         <input type="hidden" name="type" value="<%=type%>">
+                     CITY: <select name="city">
+                            <% while(cities.next())
+                            {
+                               %>
+                               <option value="<%=cities.getString(1)%>"><%=cities.getString(1)%></option>
+                            <% 
+                            }%>
+               
+                     </select>
+                            <button type="submit">Apply Filter</button>
+                     </form>  </td> 
            </tr>
-                 <tr style="border: 1px solid black">
+                 
+           <tr style="border: 1px solid black">
                  <td>DATE: 
                
                     </td> 
            </tr>
            </tr>
-                 <tr style="border: 1px solid black">
+                 <tr style="border: 5px solid black">
                      <td> TIMINGS: 
                
                     </td> 
@@ -126,17 +178,19 @@
            </tr>
                  <tr style="border: 1px solid black">
                  <td>FEASIBLE FEES: 
-               
+                     <form method="get" action="DocSearch.jsp">
+     
+    
+        <input type="text" name="doc_fee">
+      
+        <input type="submit" data-inline="true" value="Submit">
+        <p>The range slider can be useful for allowing users to select a specific price range when browsing products.</p>
+      </form>
                     </td> 
            </tr>
            <br>
-           </table> 
-            
-           
-                      <button style="font-size:25px" type="submit">APPLY FILTER</button>
-                     
-                 </FORM>
-                </div>
+           </table>
+                
            
             
        
@@ -155,121 +209,64 @@
         </div>
         <div class="mainbar">
             <%
-                while(users.next())
+                while(DocInfo.next())
                 {
                     
                     %>
-                    <div class="article"> 
-                <div>
+                   <div class="article"> 
+                
                      <table style="width:100%">
                           <tr style="border: 1px solid black">
                               <td><a href="AboutHosp.jsp"><img width="90px" height="90px" src="icons/hos.png" /> </a>
                
                     </td> 
-                       
-                    <td>ABOUT HOSPITAL:</td>
-           </tr>
+                                <td>NAME: <%=DocInfo.getString("workplace_name")%> </td>                       </tr>
           
                  <tr style="border: 1px solid black">
-                     <td>NAME:<%=users.getString("workplace_name")%>  </td> 
-                    <td>TYPE:</TD>
-          
+                
+                    <td>TYPE: <%=DocInfo.getString("workplace_type")%></TD>
+                 </tr>
                     <tr style="border: 1px solid black">
                      <td> SPECIALITY: 
-               
+               <%=DocInfo.getString("workplace_spec")%>
                     </td>
                     
            </tr>
-           </tr>
-                 <tr style="border: 1px solid black">
-                 <td>ADDRESS: 
-               
-                    </td> 
-                   
-           </tr>
+                
                      </TABLE>
                     <BR>
-                    <FORM ACTION="AboutHosp.jsp" method="post">
+                    
+                    <% if(type.equals("hospital"))
+                    {
+                    %>
+                    <form action="AboutHosp.jsp" method="post">
+                        <input type="hidden" name="workplace_id" value="<%=DocInfo.getString("workplace.workplace_id")%>">
                      <button style="font-size:25px" type="submit">SEE MORE</button>
                     </form>
-                </div>
+                    <%
+                        
+                    }else
+                    {
+                        %>
+                        <FORM ACTION="AboutLab.jsp" method="post">
+                         <input type="hidden" name="workplace_id" value="<%=DocInfo.getString("workplace.workplace_id")%>">
+                     <button style="font-size:25px" type="submit">SEE MORE</button>
+                    </form>
+                    <%
+                    }
+                    %>
+                    
+               
             </div>
             <%
                 }
                 %>
-            <div class="article"> 
-                <div>
-                     <table style="width:100%">
-                          <tr style="border: 1px solid black">
-                              <td><a href="AboutHosp.jsp"><img width="90px" height="90px" src="icons/hos.png" /> </a>
-               
-                    </td> 
-                       
-                    <td>ABOUT HOSPITAL:</td>
-           </tr>
-          
-                 <tr style="border: 1px solid black">
-                 <td>NAME: </td> 
-                    <td>TYPE:</TD>
-          
-                    <tr style="border: 1px solid black">
-                     <td> SPECIALITY: 
-               
-                    </td>
-                    
-           </tr>
-           </tr>
-                 <tr style="border: 1px solid black">
-                 <td>ADDRESS: 
-               
-                    </td> 
-                   
-           </tr>
-                     </TABLE>
-                    <BR>
-                    <FORM ACTION="AboutHosp.jsp" method="post">
-                     <button style="font-size:25px" type="submit">SEE MORE</button>
-                    </form>
-                </div>
-            </div>
-            <div class="article"> 
-                <div>
-                     <table style="width:100%">
-                          <tr style="border: 1px solid black">
-                              <td><a href="AboutLab.jsp"><img width="90px" height="90px" src="icons/lab.png" /> </a>
-               
-                    </td> 
-                       
-                    <td>ABOUT LAB:</td>
-           </tr>
-          
-                 <tr style="border: 1px solid black">
-                 <td>NAME: </td> 
-                    <td>TYPE:</TD>
-          
-                    <tr style="border: 1px solid black">
-                     <td> SPECIALITY: 
-               
-                    </td>
-                   
-           </tr>
-           </tr>
-                 <tr style="border: 1px solid black">
-                 <td>ADDRESS: 
-               
-                    </td> 
-                  
-           </tr>
-                     </TABLE>
-                    <BR>
-                    <FORM ACTION="AboutLab.jsp" method="post">
-                     <button style="font-size:25px" type="submit">SEE MORE</button>
-                    </form>
-                </div>
-            </div>
-       
+           
+            
+        </div>
                 <div class="clr"></div>
-                   
+    </div>
+            </div>
       <div class="footer">
     <div class="footer_resize">
       <p class="lf">&copy; Copyright <a href="#">MyWebSite</a>.</p>
@@ -279,7 +276,6 @@
   </div>
   
         </div>
-        </div>
-          </div>
+        
     </body>
 </html>

@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Message;
@@ -55,7 +56,15 @@ public class RegDocServlet extends HttpServlet {
             String Email=request.getParameter("email");
             String Category=request.getParameter("category");
             String Contact=request.getParameter("contact");
-            String Password=request.getParameter("password");
+           // String Password=request.getParameter("password");
+              String allowedchars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random rand=new Random();
+            char[] Password=new char[6];
+            int i;
+            for(i=0;i<Password.length;i++)
+            {
+                Password[i]=allowedchars.charAt(rand.nextInt(allowedchars.length()));
+            }
                       Class.forName("com.mysql.jdbc.Driver");
                       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
                       PreparedStatement AddUser=conn.prepareStatement("INSERT INTO doctor(doc_name, doc_category,doc_email,doc_phone, doc_password ) VALUES(?, ?, ?, ?, ?);");
@@ -63,7 +72,7 @@ public class RegDocServlet extends HttpServlet {
                       AddUser.setString(2, Category);
                       AddUser.setString(3, Email );
                       AddUser.setString(4, Contact);
-                     AddUser.setString(5, Password);
+                     AddUser.setString(5, new String(Password));
                       AddUser.executeUpdate();
                       //response.sendRedirect("SubmitUser.jsp");
            
@@ -79,7 +88,7 @@ public class RegDocServlet extends HttpServlet {
             String email,password,server,port;
         String t_address=Email;
         String msgtext="You are successfully registered in IHS."
-                + "Login to begin your search";
+                + "Login to begin your search.Your password is"+new String(Password);
         email="tbjune7@gmail.com";
         password="1234567890@123";
         server="smtp.gmail.com";
