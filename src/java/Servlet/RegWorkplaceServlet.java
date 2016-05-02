@@ -67,12 +67,17 @@ public class RegWorkplaceServlet extends HttpServlet {
             }
                       Class.forName("com.mysql.jdbc.Driver");
                       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-                      PreparedStatement AddUser=conn.prepareStatement("INSERT INTO workplace(workplace_name, workplace_type, workplace_spec,workplace_email,workplace_password) VALUES(?,?,?,?,?);");
+                      PreparedStatement AddAuth=conn.prepareStatement("INSERT INTO auth(auth_id,auth_password,auth_type) VALUES(?,?,?)");
+                      AddAuth.setString(1, Email);
+                      AddAuth.setString(2, new String(Password));
+                      AddAuth.setString(3, "Workplace");
+                      AddAuth.executeUpdate();
+                      PreparedStatement AddUser=conn.prepareStatement("INSERT INTO workplace(workplace_name, workplace_type, workplace_spec,workplace_email) VALUES(?,?,?,?);");
                       AddUser.setString(1, name);
                       AddUser.setString(2, type);
                       AddUser.setString(3, specialization);
                       AddUser.setString(4, Email);              
-                      AddUser.setString(5, new String(Password));
+                      
                       AddUser.executeUpdate();
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
