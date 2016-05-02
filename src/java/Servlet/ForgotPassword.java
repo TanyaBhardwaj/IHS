@@ -32,8 +32,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Tanya
  */
-@WebServlet(name = "RegUser", urlPatterns = {"/RegUser"})
-public class RegUserServlet extends HttpServlet {
+@WebServlet(name = "ForgotPassword", urlPatterns = {"/ForgotPassword"})
+public class ForgotPassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,20 +43,17 @@ public class RegUserServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.lang.ClassNotFoundException
-     * @throws java.sql.SQLException
-     * @throws javax.mail.MessagingException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String Name=request.getParameter("name");
-            String Email=request.getParameter("Email");
-            String REmail=request.getParameter("RecoveryEmail");
-//            String Password=request.getParameter("Password");
-            String allowedchars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            String username=request.getParameter("username");
+            
+            Class.forName("com.mysql.jdbc.Driver");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+                   String allowedchars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             Random rand=new Random();
             char[] Password=new char[6];
             int i;
@@ -65,30 +62,12 @@ public class RegUserServlet extends HttpServlet {
                 Password[i]=allowedchars.charAt(rand.nextInt(allowedchars.length()));
             }
 
-                      Class.forName("com.mysql.jdbc.Driver");
-                      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-                      PreparedStatement AddAuth=conn.prepareStatement("INSERT INTO auth(auth_id,auth_password,auth_type) VALUES(?,?,?)");
-                      AddAuth.setString(1, Email);
-                      AddAuth.setString(2, new String(Password));
-                      AddAuth.setString(3, "User");
-                      AddAuth.executeUpdate();
-                      PreparedStatement AddUser=conn.prepareStatement("INSERT INTO user(user_name, user_email, user_rec_email) VALUES(?, ?, ?);");
-                      AddUser.setString(1, Name);
-                      AddUser.setString(2, Email);
-                      AddUser.setString(3, REmail);
-                      AddUser.executeUpdate();
-                      //response.sendRedirect("SubmitUser.jsp");
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegUser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegUser at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-              String email,password,server,port;
-        String t_address=Email;
+      PreparedStatement getAuth=conn.prepareStatement("update auth set auth_password=? where auth_id=?");
+      getAuth.setString(1, new String(Password));
+      getAuth.setString(2, username);
+      getAuth.executeUpdate();
+                    String email,password,server,port;
+        String t_address=username;
         String msgtext="You are successfully registered in IHS." 
                 + "Login to begin your search.Your password is"+new String(Password);
         email="tbjune7@gmail.com";
@@ -117,9 +96,20 @@ public class RegUserServlet extends HttpServlet {
              message.setSubject(request.getParameter("message_subject"));
              message.setText(msgtext);
              Transport.send(message);
-             response.sendRedirect("SubmitUser.jsp");
+             response.sendRedirect("ForgotPassword.jsp");
+    
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ForgotPassword</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ForgotPassword at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
-    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -135,11 +125,11 @@ public class RegUserServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MessagingException ex) {
-            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -157,11 +147,11 @@ public class RegUserServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MessagingException ex) {
-            Logger.getLogger(RegUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -174,5 +164,5 @@ public class RegUserServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-}
 
+}

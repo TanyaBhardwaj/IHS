@@ -1,11 +1,11 @@
 <%-- 
-    Document   : AboutLab
-    Created on : 22 Mar, 2016, 12:12:35 PM
+    Document   : ReadWebsiteFeedback
+    Created on : 30 Apr, 2016, 2:06:13 PM
     Author     : Tanya
 --%>
 
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,10 +13,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <title>Indian Health Services</title>
+        <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
+        <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
 
     <!-- CSS
     ================================================== -->       
@@ -40,36 +40,29 @@
     <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>   
     <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
-
-<%
-              String workplaceid=request.getParameter("workplace_id");
+        
+         <%
+              session=request.getSession();
+                String workplacefeedback=request.getParameter("workplace_id");
               Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-              String query="select workplace.workplace_id workplace_name,workplace_photo, workplace_type, workplace_ownership,workplace_spec,workplace_about,branch_contact,workplace_website ,branch_state,branch_city,branch_contact from workplace inner join branch on branch.workplace_id=workplace.workplace_id where workplace.workplace_id=?";
-              PreparedStatement GetDocInfo=conn.prepareStatement(query);
-                GetDocInfo.setString(1, workplaceid);
-                  ResultSet DocInfo=GetDocInfo.executeQuery();
-                  DocInfo.first();
-                  %>
+              String query="select user_name,user_photo,feedback from user_feedback inner join user on user.user_id=user_feedback.user_id where workplace_id=? ";
+              PreparedStatement AddUser=conn.prepareStatement(query);
+                AddUser.setString(1,workplacefeedback);
+                ResultSet workfeedback=AddUser.executeQuery();
+                  %> 
+    </head>
     <style>
          .main{
-            background-image: none;
-            background-color: black;
-        }
-        table{
-            border-spacing: 30px;
-        }
-        td{
-             border: solid 1px black;
-             padding: 10px;
+         background-image: none;
+        
+          background-color: black;
         }
     </style>
       <!-- jQuery Library  -->
-    <script src="js/jquery.js"></script> 
-    </head>
+    <script src="js/jquery.js"></script>
     <body>
-        
-         <!-- BEGAIN PRELOADER -->
+            <!-- BEGAIN PRELOADER -->
     <div id="preloader">
       <div id="status">&nbsp;</div>
     </div>
@@ -103,98 +96,77 @@
           <li><a href="login.jsp"><span>LOGIN</span></a></li>
           <li><a href="register.jsp"><span>REGISTER</span></a></li>
           <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-  
+      
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
               <li>  <a href="#"><span>FIRST AID</span></a></li>
               <li>    <a href="#"><span>DISEASES</span></a></li>
               <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
-              
-           </div>
+                 </div>
           </div>
         </nav>
       </div>
 </header>
+    
        <div class="row">  
                 <div class="single-top-feature">
-            
+         
       
           <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
-
-              <br> <br>
-              <br>
-              <br>
-                     
-                     
-                     <br>
-                     <form action="WorkplaceFeedback.jsp" method="post">
-                         <input type="hidden" name="workplace_id" value="<%=workplaceid%>">
-                     <button style="font-size:25px" type="submit">POST FEEDBACK</button>
-                     </form>
-                     <br>
-                     <br>
-                       <form action="ReadFeedback.jsp" method="post">
-                         <input type="hidden" name="workplace_id" value="<%=workplaceid%>">  
-                     <button style="font-size:25px" type="submit">READ FEEDBACK</button>
-                     </form>
-                     <br>
-                     <br>
-                     <form action="WorkplaceBranches.jsp" method="post">
-                          <input type="hidden" name="workplace_id" value="<%=workplaceid%>">  
-                     <button style="font-size:25px" type="submit">BRANCHES</button>
-                     </form>
-                     
- 
-                      <table style="width:100%">
-                          <tr style="border: 1px solid black">
-                              <td><a href=""><img width="90px" height="90px" src="icons/doc1.png" /> </a>
-               
-                    </td> 
-                       
-                      
-                    <td>NAME: <%=DocInfo.getString("workplace_name")%> </td>
-           </tr>
+     
+            <h2 class="star"> <span></span> </h2>
           
-                 <tr style="border: 1px solid black">
-                 <td>ABOUT WORKPLACE: <%=DocInfo.getString("workplace_about")%> </td> 
-                 </TR>  
-                 <tr style="border: 1px solid black">
-                 <td>STATE: <%=DocInfo.getString("branch_state")%> </td> 
-                 </TR>  
-                 <tr style="border: 1px solid black">
-                 <td>CITY: <%=DocInfo.getString("branch_city")%> </td> 
-                 </TR>  
-          
-          
-                 <tr style="border: 1px solid black">
-                 <td>TYPE: <%=DocInfo.getString("workplace_type")%> </td> 
-                 </TR>  
-                 <tr style="border: 1px solid black">
-                 <td>ABOUT WORKPLACE: <%=DocInfo.getString("workplace_about")%> </td> 
-                 </TR>  
-          
-          
-          <tr style="border: 1px solid black">
-                 <td>SPECIALIZATION: <%=DocInfo.getString("workplace_spec")%> </td> 
-                 </TR>  
-          
-                    <tr style="border: 1px solid black">
-                        <TD> OWNERSHIP: <%=DocInfo.getString("workplace_ownership")%> 
-               
-                    </td>
-                    
-           </tr>
-         
-                 <tr style="border: 1px solid black">
-                 <td>CONTACT: <%=DocInfo.getString("branch_contact")%> 
-               
-                    </td> 
-                   
-           </tr>
+          <ul class="sb_menu">
            
-           </table>
-            <div>
-                </div>
+              <li><a href=""><span></span></a></li>
+              <li>  <a href="#"><span></span></a></li>
+              <li>    <a href="#"><span></span></a></li>
+              <li> <a href=""><span></span></a></li>
+          </UL>
+       
+            <% while(workfeedback.next())
+            {
+            %>
+         
+                 
+                 
+                    <table>
+                        <tr>
+                            <td><%
+                               /* String imgDataBase64="";
+                                Blob image=workfeedback.getBlob("user_photo");
+                                if((int)image.length()>0)
+                                {
+                byte [] imgData=image.getBytes(1, (int)image.length());
+                 imgDataBase64=new String(Base64.getEncoder().encode(imgData)); 
+                                }
+                                else
+                                {
+                                    
+                                }*/
+                                %>
+                                <!--<img width="100" height="100" src="data:image/png;base64," alt="img"> --></td>
+                            <td> USERNAME: <%=workfeedback.getString("user_name")%></td>
+                        </tr>                   
+  <tr>                  
+      <th>COMMENTS:</th>
+      <td><p><%=workfeedback.getString("feedback")%></p> </td>
+  </tr>
+  
+   <br>
+   <br>
+   </table>
+                     <button style="font-size:30px" type="submit">POST</button>
+                 
+                     <BR>
+                   
+                     
+              
+          
+            <%    
+            }%>
+</div>
+</div>
       <!--=========== Start Footer SECTION ================-->
       <footer id="footer">
       <!-- Start Footer Top -->
