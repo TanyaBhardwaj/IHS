@@ -1,4 +1,4 @@
-
+<%--
 
 
 
@@ -55,7 +55,7 @@
                   edit_flag=Integer.parseInt(request.getParameter("edit_flag"));
               }
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               PreparedStatement GetDocInfo=conn.prepareStatement("select doc_city,doc_state,doc_qual,doc_spec,doc_exp,doc_about,doc_fee from doctor where doc_id=? ;");
               GetDocInfo.setString(1, request.getSession().getAttribute("doc_id").toString());
               ResultSet DocInfo=GetDocInfo.executeQuery();
@@ -396,8 +396,9 @@ function abortHandler(event){
                       </textarea></td>
                       <td>
                           <select name="time">
-  <option value="am">am</option>
-  <option value="pm">pm</option>
+  <option value="morning">morning</option>
+  <option value="afternoon">afternoon</option>
+  <option value="evening">evening</option>
                           </select>
                           </td>
   
@@ -437,13 +438,14 @@ function abortHandler(event){
                  
              </tr>
              <TR>
-                 <TD  style="border: 1px solid black"> <textarea> <%=slots.getString("start_time")%> </textarea> </td>
+                 <TD  style="border: 1px solid black"> <textarea> <%=slots.getString("slot_id")%> </textarea> </td>
                  <td  style="border: 1px solid black"><textarea><%=slots.getString("end_time") %> </textarea> </td>
                  <td  style="border: 1px solid black"><textarea> <%=slots.getString("end_time") %> </textarea> </td>
-                 <button style="font-size:15px; width:150px;
-            height:35px;
-            " type="submit">REMOVE SLOT</button>
-                 <br> <br> </TR>
+                 <td style="border: 1px solid black">
+                     <form action="RemoveDocSlots" method="post">
+                         <input type="hidden" name="slot_id" value="<%=slots.getString("slot_id")%>">
+                         <button style="font-size:15px; width:150px;height:35px;" type="submit">REMOVE SLOT</button></form></td>
+                  </TR>
              <% } %>
      </table> </center>
                  

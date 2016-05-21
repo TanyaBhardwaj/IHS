@@ -45,7 +45,7 @@
               session=request.getSession();
                 String workplacefeedback=request.getParameter("user_id");
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               String query="insert into feedback_website(user_id,feedback) value(?,?) ";
               PreparedStatement AddUser=conn.prepareStatement(query);
                 AddUser.setString(1, session.getAttribute("user_id").toString());

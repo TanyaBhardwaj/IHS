@@ -53,7 +53,7 @@
                   edit_flag=Integer.parseInt(request.getParameter("edit_flag"));
               }
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               PreparedStatement GetDocInfo=conn.prepareStatement("select workplace_name, workplace_email,workplace_type,workplace_ownership,workplace_spec,workplace_about,workplace_website from workplace where workplace_id=? ;");
                GetDocInfo.setString(1, session.getAttribute("workplace_id").toString());
               ResultSet DocInfo=GetDocInfo.executeQuery();
@@ -289,19 +289,12 @@ function abortHandler(event){
  
       </td>
   </tr>
-   <tr style="border: 1px solid black">
-      <td  style="border: 1px solid black;width:250px;
-               height:30px;text-align: center;">TIMINGS:</td>
-       <td  style="border: 1px solid black;width:250px;
-               height:30px;text-align: center;">  <textarea rows="1" name="time" cols="30">
-
-                        </textarea> </td>
-  </tr>
+  
     <tr style="border: 1px solid black">
       <td  style="border: 1px solid black;width:250px;
             height:30px;text-align: center;">WEBSITE:</td>
        <td  style="border: 1px solid black;width:250px;
-               height:30px;text-align: center;"><textarea name="website" rows="1" cols="30"></textarea></td>
+               height:30px;text-align: center;"><input type="text" name="website"></td>
   </tr>
   <br>
   </table>
@@ -328,12 +321,7 @@ function abortHandler(event){
           <label><%=DocInfo.getString("workplace_ownership")%>  </label> 
       </td>
   </tr>
-   <tr style="border: 1px solid black">
-      <td  style="border: 1px solid black">TIMINGS: &nbsp;&nbsp;&nbsp;&nbsp;</td>
-       <td>  <textarea rows="1" cols="30">
-
-                        </textarea> </td>
-  </tr>
+   
     <tr style="border: 1px solid black">
       <td  style="border: 1px solid black">WEBSITE: &nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td>  <a href="<%=DocInfo.getString("workplace_website")%>"></a> </td>

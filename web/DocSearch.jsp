@@ -48,7 +48,7 @@
         
 <%
     Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");          
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");          
     String cat=request.getParameter("cat");
               String term="";
               if(request.getParameter("editbox_search")!=null)
@@ -82,7 +82,7 @@
                 GetDocInfo.setString(1,cat);
               
               //DocInfo.first();
-              Connection wconn=DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "tanyabhardwaj");
+              Connection wconn=DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "sr71xb35");
               if(request.getParameter("state")!=null)
               {
                 query+=" and doc_state=? ";

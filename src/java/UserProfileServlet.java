@@ -57,7 +57,7 @@ public class UserProfileServlet extends HttpServlet {
     //        Files.copy(fileContent, upload_file.toPath());
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
       PreparedStatement AddPhoto=conn.prepareStatement("update user set user_photo=? where user_id=?");
       AddPhoto.setBlob(1, fileContent);
       AddPhoto.setInt(2, 1);

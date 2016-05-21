@@ -60,7 +60,7 @@
     <%
         
          Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
             Calendar cal=Calendar.getInstance();
             int i=0;
         %>
@@ -159,7 +159,7 @@
                 </td><td>
                     <table>
                         <% PreparedStatement getmslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='morning' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
-            getmslots.setString(1, "1");
+            getmslots.setString(1, request.getParameter("doc_id"));
             getmslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
             ResultSet mslots=getmslots.executeQuery();
                             while(mslots.next())
@@ -185,7 +185,7 @@
                 <td>
                     <table>
                         <% PreparedStatement getaslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='afternoon' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
-            getaslots.setString(1, "1");
+            getaslots.setString(1, request.getParameter("doc_id"));
             getaslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
             ResultSet aslots=getaslots.executeQuery();
                             while(aslots.next())
@@ -211,7 +211,7 @@
                 <td>
                     <table>
                         <% PreparedStatement geteslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='evening' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
-            geteslots.setString(1, "1");
+            geteslots.setString(1, request.getParameter("doc_id"));
             geteslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
             ResultSet eslots=geteslots.executeQuery();
                             while(eslots.next())

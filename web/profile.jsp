@@ -22,7 +22,7 @@
         <%
             String x=request.getParameter("uid");
                         Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "tanyabhardwaj");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "sr71xb35");
       PreparedStatement getUser=conn.prepareStatement("Select user_id, name,password from users where user_id=? " );
       getUser.setInt(1, Integer.parseInt(x));
       ResultSet users=getUser.executeQuery();

@@ -52,7 +52,7 @@
                   edit_flag=Integer.parseInt(request.getParameter("edit_flag"));
               }
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               PreparedStatement GetDocInfo=conn.prepareStatement("select user_state, user_city,user_phone,user_about from user where user_id=? ;");
                GetDocInfo.setString(1, session.getAttribute("user_id").toString());
               ResultSet DocInfo=GetDocInfo.executeQuery();

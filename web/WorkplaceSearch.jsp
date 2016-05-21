@@ -47,7 +47,7 @@
             
            
     Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");          
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");          
     String cat=request.getParameter("cat");
     String type=request.getParameter("type");
               String term="";
@@ -84,7 +84,7 @@
                 
               
               //DocInfo.first();
-              Connection wconn=DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "tanyabhardwaj");
+              Connection wconn=DriverManager.getConnection("jdbc:mysql://localhost/world", "root", "sr71xb35");
               if(request.getParameter("state")!=null)
               {
                 query+=" and branch_state=? ";
@@ -183,7 +183,7 @@
                 <div class="single-top-feature">
               <%
 /*                  Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
        
       PreparedStatement getUser=conn.prepareStatement("Select branch_city,branch_area,branch_timing from ihs.branch where branch_city=?,branch_area and branch_timing=?");
             

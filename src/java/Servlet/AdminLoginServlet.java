@@ -44,7 +44,7 @@ public class AdminLoginServlet extends HttpServlet {
               String username=request.getParameter("username");
             String password=request.getParameter("password");
             Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
        
       PreparedStatement getUser=conn.prepareStatement("Select admin_username, admin_password from ihs.admin where admin_username=? and admin_password=?");
       getUser.setString(1, username);

@@ -43,9 +43,9 @@
 
 <%
             
-              String workplaceid=request.getParameter("workplace_id");
+              String workplaceid=request.getSession().getAttribute("workplace_id").toString();
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               String query="select branch_state, branch_city,branch_area,branch_contact,branch_timing,branch_photo,branch_address from branch where workplace_id=? ";
               PreparedStatement GetDocInfo=conn.prepareStatement(query);
                
@@ -123,11 +123,21 @@
                       
      
           <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
-     
-            <form action="WorkplaceFeedback.jsp" method="post">
-            
+          <br>
+          <br>
+          <br>
+          <br>
+     <div class="article">
+            <form action="AddBranch" method="post">
+                State <input type="text" name="branch_state"><br>
+                City <input type="text" name="branch_city"><br>
+                Area <input type="text" name="branch_area"><br>
+                Contact <input type="text" name="branch_contact"><br>
+                Timing <input type="text" name="branch_timing"><br>
+                <button type="submit">Add</button>
+                
             </form>
-                  
+     </div>
          <%
                 while(DocInfo.next())
                 {

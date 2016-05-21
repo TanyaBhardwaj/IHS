@@ -54,7 +54,7 @@ public class UploadServlet extends HttpServlet {
              File file1=new File(upload,stripfname);
              Files.copy(fileContent, file1.toPath());
              Class.forName("com.mysql.jdbc.Driver");
-      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "tanyabhardwaj");
+      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "sr71xb35");
       PreparedStatement AddFile=conn.prepareStatement("INSERT INTO `images`(url) VALUES (?)");
       AddFile.setString(1, "files/"+stripfname);
       AddFile.executeUpdate();
