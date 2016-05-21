@@ -58,6 +58,7 @@ public class UpdateDoc extends HttpServlet {
               UpdateProfile.setString(5, exp);
                UpdateProfile.setString(6, session.getAttribute("doctor_id").toString());
               UpdateProfile.executeUpdate();
+              response.sendRedirect("UpdateDoc.jsp");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

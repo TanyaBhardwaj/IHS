@@ -67,11 +67,15 @@ public class RegUserServlet extends HttpServlet {
 
                       Class.forName("com.mysql.jdbc.Driver");
                       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-                      PreparedStatement AddUser=conn.prepareStatement("INSERT INTO user(user_name, user_email, user_password, user_rec_email) VALUES(?, ?, ?, ?);");
+                      PreparedStatement AddAuth=conn.prepareStatement("INSERT INTO auth(auth_id,auth_password,auth_type) VALUES(?,?,?)");
+                      AddAuth.setString(1, Email);
+                      AddAuth.setString(2, new String(Password));
+                      AddAuth.setString(3, "User");
+                      AddAuth.executeUpdate();
+                      PreparedStatement AddUser=conn.prepareStatement("INSERT INTO user(user_name, user_email, user_rec_email) VALUES(?, ?, ?);");
                       AddUser.setString(1, Name);
                       AddUser.setString(2, Email);
-                      AddUser.setString(3, new String(Password));
-                      AddUser.setString(4, REmail);
+                      AddUser.setString(3, REmail);
                       AddUser.executeUpdate();
                       //response.sendRedirect("SubmitUser.jsp");
             out.println("<!DOCTYPE html>");

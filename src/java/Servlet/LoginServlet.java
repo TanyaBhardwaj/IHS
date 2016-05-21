@@ -49,16 +49,44 @@ public class LoginServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
        
-      PreparedStatement getUser=conn.prepareStatement("Select user_id, user_email,user_password from ihs.user where user_email=? and user_password=?");
-      getUser.setString(1, username);
-      getUser.setString(2, password);
-      ResultSet users=getUser.executeQuery( );
+      PreparedStatement getAuth=conn.prepareStatement("Select auth_id, auth_password,auth_type from ihs.auth where auth_id=? and auth_password=?");
+      getAuth.setString(1, username);
+      getAuth.setString(2, password);
+      ResultSet Auth=getAuth.executeQuery( );
         HttpSession session=request.getSession();
       
-          if(users.first())
+          if(Auth.first())
           {
-              session.setAttribute("user_id", users.getString("user_id"));
-              response.sendRedirect("UserLoginResult.jsp");
+              
+                switch (Auth.getString("auth_type")) {
+                    case "User":
+                        PreparedStatement getusers=conn.prepareStatement("select user_id from user where user_email=?");
+                        getusers.setString(1, username);
+                        ResultSet users=getusers.executeQuery();
+                        users.first();
+                        
+                        session.setAttribute("user_id", users.getString("user_id"));
+                        response.sendRedirect("UserLoginResult.jsp");
+                        break;
+                    case "Doctor":
+                        PreparedStatement getdocs=conn.prepareStatement("select doc_id from doctor where doc_email=?");
+                        getdocs.setString(1, username);
+                        ResultSet docs=getdocs.executeQuery();
+                        docs.first();
+                        session.setAttribute("doc_id", docs.getString("doc_id"));
+                        response.sendRedirect("DocLoginResult.jsp");
+                        break;
+                    case "Workplace":
+                        PreparedStatement getworkplace=conn.prepareStatement("select workplace_id from workplace where workplace_email=?");
+                        getworkplace.setString(1, username);
+                        ResultSet workplace=getworkplace.executeQuery();
+                        workplace.first();
+                        session.setAttribute("workplace_id", workplace.getString("workplace_id"));
+                        response.sendRedirect("WorkplaceLoginResult.jsp");
+                        break;
+                    default:
+                        break;
+                }   
               
           }
       
