@@ -66,7 +66,7 @@ public class RegDocServlet extends HttpServlet {
                 Password[i]=allowedchars.charAt(rand.nextInt(allowedchars.length()));
             }
                       Class.forName("com.mysql.jdbc.Driver");
-                      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+                      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
                       PreparedStatement AddAuth=conn.prepareStatement("INSERT INTO auth(auth_id,auth_password,auth_type) VALUES(?,?,?)");
                       AddAuth.setString(1, Email);
                       AddAuth.setString(2, new String(Password));

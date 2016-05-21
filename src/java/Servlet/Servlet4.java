@@ -48,7 +48,7 @@ public class Servlet4 extends HttpServlet {
       String password=request.getParameter("password");
       
       Class.forName("com.mysql.jdbc.Driver");
-      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "tanyabhardwaj");
+      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "sr71xb35");
       PreparedStatement AddUser=conn.prepareStatement("INSERT INTO `users`(name,password) VALUES (?,?)");
       AddUser.setString(1,name);
       AddUser.setString(2,password);

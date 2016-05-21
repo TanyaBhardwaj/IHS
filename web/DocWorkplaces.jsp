@@ -4,6 +4,10 @@
     Author     : Tanya
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -103,59 +107,44 @@
 </header>
        <div class="row">  
                 <div class="single-top-feature">
-         
+                    <br><br><br><br><br><br><br><br><br><br><br><br>    
      
           <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
-      
+       <% 
+Class.forName("com.mysql.jdbc.Driver");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              PreparedStatement GetWorkplaces=conn.prepareStatement("select workplace.workplace_id, workplace_name, workplace_type from workplace inner join specdoctors on workplace.workplace_id=specdoctors.workplace_id where specdoctors.doc_id=? ");
+              GetWorkplaces.setString(1, request.getParameter("doc_id"));
+              ResultSet Workplaces=GetWorkplaces.executeQuery();
+       %>
                      <table>
+                         <% while(Workplaces.next()) { %>
                           <tr style="border: 1px solid black">
                               
-                <td><a href=""><img width="90px" height="90px" src="icons/doc1.png" /> </a>
+                              <td><%
+                                  if(Workplaces.getString("workplace_type").equalsIgnoreCase("hospital"))
+                                  {
+                                      %>
+                                      <a href="AboutHosp.jsp?workplace_id=<%=Workplaces.getString("workplace_id")%>"><%=Workplaces.getString("workplace_name")%> </a>
+                                  <%
+                                  }else if(Workplaces.getString("workplace_type").equalsIgnoreCase("lab"))
+                                  {
+                                        %>
+                                      <a href="AboutLab.jsp?workplace_id=<%=Workplaces.getString("workplace_id")%>"><%=Workplaces.getString("workplace_name")%> </a>
+                                  <%
+                                  }
+                                  %>
+                                  
                     </td> 
                        
-                    <td> <textarea id="message" name="ABOUT YOURSELf" rows="2" cols="40"></textarea> </td>
+                    
            </tr>
                
-                 <tr style="border: 1px solid black">
-                 <td>NAME: 
-               
-                    </td> 
-                    <td><textarea id="message" name="name" rows="1" cols="40"></textarea>
-           </tr>
-           </tr>
-                 <tr style="border: 1px solid black">
-                     <td> ADDRESS: 
-               
-                    </td>
-                    <td><textarea id="message" name="address" rows="2" cols="40"></textarea>
-           </tr>
-           </tr>
-                 <tr style="border: 1px solid black">
-                 <td>LANDMARK: 
-               
-                    </td> 
-                    <td><textarea id="message" name="landmark" rows="1" cols="40"></textarea>
-           </tr>
-           <tr style="border: 1px solid black">
-                 <td>CONTACT: 
-               
-                    </td> 
-                    <td><textarea id="message" name="contact" rows="2" cols="40"></textarea>
-           </tr>
-           <tr style="border: 1px solid black">
-                 <td>TIMING: 
-               
-                    </td> 
-                    <td><textarea id="message" name="timing" rows="1" cols="40"></textarea>
-           </tr>
-            <tr style="border: 1px solid black">
-                 <td>FEES: 
-               
-                    </td> 
-                    <td><textarea id="message" name="fees" rows="1" cols="40"></textarea>
-           </tr>
+                 
+           <% } %>
            </table>
                     <form action="BookAppointment.jsp" method="post">
+                        <input type="hidden" name="doc_id" value="<%=request.getParameter("doc_id")%>">
                      <button style="font-size:25px" type="submit">BOOK APPOINTMENT</button>
                     </form>
 </div>

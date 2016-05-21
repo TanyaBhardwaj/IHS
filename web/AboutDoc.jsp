@@ -44,7 +44,7 @@
 <%
               String docid=request.getParameter("doc_id");
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               String query="select doc_name,doc_photo, doc_about,doc_state,doc_city,doc_phone,doc_email ,doc_category,doc_spec,doc_qual,doc_exp from doctor where doc_id=? ";
               PreparedStatement GetDocInfo=conn.prepareStatement(query);
                 GetDocInfo.setString(1, docid);
@@ -130,6 +130,7 @@
           <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
       
               <form action="BookAppointment.jsp" method="post">
+                  <input type="hidden" name="doc_id" value="<%=request.getParameter("doc_id")%>">
                      <button style="font-size:25px" type="submit">BOOK APPOINTMENTS</button>
               </form>
                      <br>
@@ -138,6 +139,7 @@
                      <BR>
                      
                      <form action="DocWorkplaces.jsp" method="post">
+                         <input type="hidden" name="doc_id" value="<%=request.getParameter("doc_id")%>">
                      <button style="font-size:25px" type="submit">SEE HIS WORKPLACES</button>
                      </form>
       
@@ -158,7 +160,7 @@
                  <td>SPECIALIZATION: <%=DocInfo.getString("doc_spec")%></td> 
                  </TR>  
                    <tr style="border: 1px solid black">
-                 <td>CATEGORY: <%=DocInfo.getString("doc_cat")%></td> 
+                 <td>CATEGORY: <%=DocInfo.getString("doc_category")%></td> 
                  </TR>
                  
                  <tr style="border: 1px solid black">
@@ -170,9 +172,9 @@
                  </TR>  
                  
                  <tr style="border: 1px solid black">
-                 <td>STATE: <%=DocInfo.getString("doc_ state")%></td> 
+                 <td>STATE: <%=DocInfo.getString("doc_state")%></td> 
                  
-                  <td>CITY: <%=DocInfo.getString("doc_ city")%></td> 
+                  <td>CITY: <%=DocInfo.getString("doc_city")%></td> 
                  </TR>  
                     <tr style="border: 1px solid black">
                         <TD> WEBSITE: <%=DocInfo.getString("doc_email")%>

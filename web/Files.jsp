@@ -20,7 +20,7 @@
         <h1>Hello World!</h1>
         <ul>
         <%  
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "tanyabhardwaj");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "sr71xb35");
       PreparedStatement GetFile=conn.prepareStatement("Select url from `images`");
       ResultSet files=GetFile.executeQuery();
       while(files.next())

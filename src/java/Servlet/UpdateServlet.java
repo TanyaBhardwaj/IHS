@@ -46,7 +46,7 @@ public class UpdateServlet extends HttpServlet {
             String password=request.getParameter("password");
             String id=request.getParameter("id");
                         Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "tanyabhardwaj");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "sr71xb35");
       PreparedStatement UpdateUser =conn.prepareStatement("update users set name=?, password=? where user_id=?");
       UpdateUser.setString(1, name);
       UpdateUser.setString(2, password);

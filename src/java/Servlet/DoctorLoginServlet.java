@@ -47,7 +47,7 @@ public class DoctorLoginServlet extends HttpServlet {
             String username=request.getParameter("username");
             String password=request.getParameter("password");
             Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
        
       PreparedStatement getUser=conn.prepareStatement("Select doc_id, doc_email,doc_password from ihs.doctor where doc_email=? and doc_password=?");
       getUser.setString(1, username);
