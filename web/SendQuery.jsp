@@ -1,6 +1,6 @@
 <%-- 
-    Document   : UserLogin
-    Created on : 14 Apr, 2016, 4:05:10 PM
+    Document   : SendQuery
+    Created on : 17 May, 2016, 8:25:13 PM
     Author     : Tanya
 --%>
 
@@ -9,11 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   
-        <title>Indian Health Services</title>
+     <title>Indian Health Services</title>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
+       <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
 
     <!-- CSS
     ================================================== -->       
@@ -38,19 +38,20 @@
     <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-
-    <style>
+<style>
          .main{
             background-image: none;
             background-color: black;
         }
+        label{
+            width: 250px;
+height: 30px;
+        }
     </style>
-      <!-- jQuery Library  -->
-    <script src="js/jquery.js"></script>    
-   
+    <!-- jQuery Library  -->
+    <script src="js/jquery.js"></script> 
     </head>
     <body>
-     
          <!-- BEGAIN PRELOADER -->
     <div id="preloader">
       <div id="status">&nbsp;</div>
@@ -67,7 +68,7 @@
           <div class="container">
             <div class="navbar-header">
               <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"  aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -82,13 +83,24 @@
             <div id="navbar" class="navbar-collapse collapse">
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
           <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+          
+       
+          <li><a href="Login.jsp"><span>LOGIN</span></a></li>
           <li><a href="register.jsp"><span>REGISTER</span></a></li>
-          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-         
-              <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
-              <li>  <a href="#"><span>SERVICES</span></a></li>
-              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
-          </UL>
+       
+            <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Service <span class="fa fa-angle-down"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="FirstAid.jsp">First Aid</a></li>
+                    <li><a href="Diseases,jsp">Diseases</a></li>
+                    <li><a href="Fruits.jsp">Fruits and their benefits</a></li>
+                  </ul>
+                </li>
+            <li><a href="aboutus.jsp">ABOUT US</a></li>
+            
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+          </ul>
+          
        </div>
           </div>
         </nav>
@@ -97,29 +109,35 @@
        <div class="row">  
                 <div class="single-top-feature">
          
-       
-                 
-                 
-                 
-        
-        <form action="LoginServlet" method="post">
-          
-            <br><br>
-            
-            <label style="font-size: 30px">USER EMAIL <br></label><input type="email" name="username" required><br>
-        <br>
-        <br>
-        <label style="font-size: 30px">PASSWORD <br></label><input type="password" name="password" required><br>
-        <br>
-        <br>
-        <button style="font-size:30px" type="submit">LOGIN</button>
-        <input type="submit" value="Forgot Password" onclick="form.action='ForgotPassword';">
-        </form>
+                      <h1 style="color:black; ">HEY USER,</H1>
+                    <BR>
+                    <BR>
+                    <h2 style=" text-align: center; color:lightseagreen">THANKYOU FOR USING OUR WEBSITE :) </h2>
+                     <h2 style="text-align: center; color:lightseagreen">Your query has been recorded </h2>
+                      <h2 style="text-align: center; color:lightseagreen">We will try to solve it as soon as possible</h2>
+                       <h2 style="text-align: center; color:lightseagreen">Hope we served you well :)</h2>
+                     
+                     
+                      <BR>
+                      <form action="index.jsp" method="post">
+                           <button style="font-size:30px" type="submit">YOU CAN CONTINUE YOUR SEARCH</button>
+                           <BR>
+                           <BR>
+                        
+                      </form>
                     
+                    
+                    
+                    
+                    
+                    
+       
                 </div>
        </div>
-            <!--=========== Start Footer SECTION ================-->
-      <footer id="footer">
+    
+                
+                 <!--=========== Start Footer SECTION ================-->
+    <footer id="footer">
       <!-- Start Footer Top -->
       <div class="footer-top">
         <div class="container">
@@ -132,8 +150,8 @@
               </div>           
               <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
+            </div>  
+            <div class="col-lg-3 col-md-3 col-sm-3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
               <div class="single-footer-widget">
                 <div class="section-heading">
                 <h2>Our Service</h2>
@@ -147,35 +165,20 @@
                 <li><a href="#"><span class="fa fa-check"></span>Service 5</a></li>
               </ul>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="single-footer-widget">
-                <div class="section-heading">
-                <h2>Tags</h2>
-                <div class="line"></div>
-              </div>
-                <ul class="tag-nav">
-                  <li><a href="#">Dental</a></li>
-                  <li><a href="#">Surgery</a></li>
-                  <li><a href="#">Pediatric</a></li>
-                  <li><a href="#">Cardiac</a></li>
-                  <li><a href="#">Ophthalmology</a></li>
-                  <li><a href="#">Diabetes</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
+            </div> 
+                     
+         
+          <div class="col-lg-3 col-md-3 col-sm-3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
               <div class="single-footer-widget">
                 <div class="section-heading">
                 <h2>Contact Info</h2>
                 <div class="line"></div>
               </div>
-              <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+              <p>The point of using Lorem Ipsum is convinience for the users.</p>
               <address class="contact-info">
-                <p><span class="fa fa-home"></span>305 Intergraph Way
-                Madison, AL 35758, USA</p>
-                <p><span class="fa fa-phone"></span>1.256.730.2000</p>
-                <p><span class="fa fa-envelope"></span>info@wpfmedinova.com</p>
+                <p><span class="fa fa-home"></span>16th Main,BTM 2nd stage,Bangalore</p>
+                <p><span class="fa fa-phone">8054955858</span></p>
+                <p><span class="fa fa-envelope"></span>tanyajune7@gmail.com</p>
               </address>
               </div>
             </div>
@@ -184,36 +187,48 @@
       </div>
       <!-- Start Footer Middle -->
       <div class="footer-middle">
+        
+          
         <div class="container">
           <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="footer-copyright">
-              <p>&copy; Copyright 2015 <a href="index.html">WpF Medinova</a></p>
+              <p>&copy; Copyright 2016 <a href="index.jsp">WpF Medinova</a></p>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="footer-social">              
-                <a href="#"><span class="fa fa-facebook"></span></a>
-                <a href="#"><span class="fa fa-twitter"></span></a>
-                <a href="#"><span class="fa fa-google-plus"></span></a>
-                <a href="#"><span class="fa fa-linkedin"></span></a>     
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
+               <div class="footer-bottom">              
+               
+              <p>Design & Developed By <a rel="nofollow" href=""> Tanya Bhardwaj</a></p>
             </div>
-          </div>
+            </div>
+          
         </div>
         </div>
       </div>
       <!-- Start Footer Bottom -->
-      <div class="footer-bottom">
-        <div class="container">
+      <div style="background-color: #11060a;" class="footer-social">                         
+    
+      <br>
+            <div class="container">
           <div class="row">
-            <div class="col-md-12">
-              <p>Design & Developed By <a rel="nofollow" href="http://www.wpfreeware.com/">WpF Freeware</a></p>
-            </div>
+          
+       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+           <br>
+            <div style="align-content:center; "class="footer-social">              
+                <a href="#"><span class="fa fa-facebook"></span></a>
+                <a href="#"><span class="fa fa-twitter"></span></a>
+                <a href="#"><span class="fa fa-google-plus"></span></a>
+                <a href="#"><span class="fa fa-linkedin"></span></a>     
+                <br>
+                <br></div>
           </div>
-        </div>
+       </div>
+            </div>
+       </div>
       </div>
     </footer>
-<!--=========== End Footer SECTION ================-->
+    <!--=========== End Footer SECTION ================-->
      <!-- Bootstrap default js --> 
     <script src="js/bootstrap.min.js"></script>
     <!-- slick slider -->
@@ -230,5 +245,13 @@
     <script src='js/photoswipe-ui-default.min.js'></script>    
     <script src="js/photoswipe-gallery.js"></script>
  <script src="js/custom.js"></script>
+</body>
+</html>
+
+                 
+                 
+    
+          <h1><a href="index.jsp"><span></span> <small></small></a></h1>
+      
     </body>
 </html>

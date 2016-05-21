@@ -82,53 +82,59 @@
             <div id="navbar" class="navbar-collapse collapse">
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
        
-          <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
-          <li><a href="login.jsp"><span>LOGIN</span></a></li>
-          <li><a href="register.jsp"><span>REGISTER</span></a></li>
-          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-      
+           <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
+        
+          <li><a href="contact.jsp"><span>CONTACTUS</span></a></li>
+        
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
-              <li>  <a href="#"><span>FIRST AID</span></a></li>
-              <li>    <a href="#"><span>DISEASES</span></a></li>
-              <li> <a href="feedback.jsp"><span>FEEDBACK</span></a></li>
-          </UL>
-              
-     
+             <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Service <span class="fa fa-angle-down"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="FirstAid.jsp">First Aid</a></li>
+                    <li><a href="Diseases,jsp">Diseases</a></li>
+                    <li><a href="Fruits.jsp">Fruits and their benefits</a></li>
+                  </ul>
+                </li>
+          
+              <BR> <BR> <BR>
+         
+            
+              <li><a href="WorkplaceProfile.jsp"><span>PROFILE </span></a></li>
+            <li><a href="index.jsp">SEARCH</a></li>
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+            <li><a href="index.jsp">LOGOUT</a></li>
+        </ul>
            </div>
           </div>
         </nav>
       </div>
+    
 </header>
+    <br>
+    <br>
            <div class="row">  
+               <br> <br>
                 <div class="single-top-feature">
-    <h2 class="star"> <span>MENU</span> </h2>
-         
-          <ul class="sb_menu">
-            
-            <li><a href="WorkplaceProfile.jsp">YOUR PROFILE</a></li>
-            <li><a href="index.jsp">SEARCH</a></li>
-            <li><a href="Feedback.jsp">FEEDBACK</a></li>
-            <li><a href="index.jsp">LOGOUT</a></li>
-         
-          </UL>
-                    <h1 style="color:black; ">HEY,</H1>
+                    <br> <br>
+                    <h2 style="color:black; ">HEY,</H2>
                     <BR>
-                    <BR>
+                   
                     <h2 style=" text-align: center; color:lightblueblue;  ">YOU HAVE </h2>
                      <h2 style="text-align: center; color:lightblueblue">SUCCESSFULLY </h2>
                       <h2 style="text-align: center; color:lightblueblue">LOGGED IN </h2>
                       <BR>
-                      <BR>
-                      <BR>
+                      
+                 
                       <form action="index.jsp" method="post">
-                           <button style="font-size:30px" type="submit">YOU CAN BEGIN YOUR SEARCH</button>
+                           <button style="font-size:25px" type="submit">YOU CAN BEGIN YOUR SEARCH</button>
                            <BR>
                            <BR>
                         
                       </form>
                 </div>
            </div>
-          <footer id="footer">
+           <!--=========== Start Footer SECTION ================-->
+    <footer id="footer">
       <!-- Start Footer Top -->
       <div class="footer-top">
         <div class="container">
@@ -141,50 +147,35 @@
               </div>           
               <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
               </div>
-            </div>
+            </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="single-footer-widget">
                 <div class="section-heading">
                 <h2>Our Service</h2>
                 <div class="line"></div>
               </div>
-              <ul class="footer-service">
-                <li><a href="#"><span class="fa fa-check"></span>Service 1</a></li>
-                <li><a href="#"><span class="fa fa-check"></span>Service 2</a></li>
-                <li><a href="#"><span class="fa fa-check"></span>Service 3</a></li>
-                <li><a href="#"><span class="fa fa-check"></span>Service 4</a></li>
-                <li><a href="#"><span class="fa fa-check"></span>Service 5</a></li>
+             <ul class="footer-service">
+                  <li><a href="FirstAid.jsp"><span class="fa fa-check"></span>First Aid</a></li>
+                <li><a href="Fruits.jsp"><span class="fa fa-check"></span>Fruits</a></li>
+                <li><a href="Diseases.jsp"><span class="fa fa-check"></span>Diseases</a></li>
+                <li><a href="#search"><span class="fa fa-check"></span>Search for doctor</a></li>
+                <li><a href="#search"><span class="fa fa-check"></span>Search for hospital</a></li>
+                  <li><a href="#search"><span class="fa fa-check"></span>Search for laboratory</a></li>
               </ul>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="single-footer-widget">
-                <div class="section-heading">
-                <h2>Tags</h2>
-                <div class="line"></div>
-              </div>
-                <ul class="tag-nav">
-                  <li><a href="#">Dental</a></li>
-                  <li><a href="#">Surgery</a></li>
-                  <li><a href="#">Pediatric</a></li>
-                  <li><a href="#">Cardiac</a></li>
-                  <li><a href="#">Ophthalmology</a></li>
-                  <li><a href="#">Diabetes</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
+            </div> &nbsp;&nbsp;
+          
+          <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="single-footer-widget">
                 <div class="section-heading">
                 <h2>Contact Info</h2>
                 <div class="line"></div>
               </div>
-              <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+              <p>The point of using Lorem Ipsum is convinience for the users.</p>
               <address class="contact-info">
-                <p><span class="fa fa-home"></span>305 Intergraph Way
-                Madison, AL 35758, USA</p>
-                <p><span class="fa fa-phone"></span>1.256.730.2000</p>
-                <p><span class="fa fa-envelope"></span>info@wpfmedinova.com</p>
+                <p><span class="fa fa-home"></span>16th Main,BTM 2nd stage,Bangalore</p>
+                <p><span class="fa fa-phone">8054955858</span></p>
+                <p><span class="fa fa-envelope"></span>tanyajune7@gmail.com</p>
               </address>
               </div>
             </div>
@@ -193,36 +184,49 @@
       </div>
       <!-- Start Footer Middle -->
       <div class="footer-middle">
+        
+          
         <div class="container">
           <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="footer-copyright">
-              <p>&copy; Copyright 2015 <a href="index.html">WpF Medinova</a></p>
+              <p>&copy; Copyright 2016 <a href="index.jsp">WpF Medinova</a></p>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="footer-social">              
-                <a href="#"><span class="fa fa-facebook"></span></a>
-                <a href="#"><span class="fa fa-twitter"></span></a>
-                <a href="#"><span class="fa fa-google-plus"></span></a>
-                <a href="#"><span class="fa fa-linkedin"></span></a>     
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
+               <div class="footer-bottom">              
+               
+              <p>Design & Developed By <a rel="nofollow" href=""> Tanya Bhardwaj</a></p>
             </div>
-          </div>
+            </div>
+          
         </div>
         </div>
       </div>
       <!-- Start Footer Bottom -->
-      <div class="footer-bottom">
-        <div class="container">
+      <div style="background-color: #11060a;" class="footer-social">                         
+    
+      <br>
+            <div class="container">
           <div class="row">
-            <div class="col-md-12">
-              <p>Design & Developed By <a rel="nofollow" href="http://www.wpfreeware.com/">WpF Freeware</a></p>
-            </div>
+          
+       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+           <br>
+            <div style="align-content:center; "class="footer-social">              
+                <a href="#"><span class="fa fa-facebook"></span></a>
+                <a href="#"><span class="fa fa-twitter"></span></a>
+                <a href="#"><span class="fa fa-google-plus"></span></a>
+                <a href="#"><span class="fa fa-linkedin"></span></a>     
+                <br>
+                <br></div>
           </div>
-        </div>
+       </div>
+            </div>
+       </div>
       </div>
     </footer>
-               <!-- Bootstrap default js --> 
+    <!--=========== End Footer SECTION ================-->
+     <!-- Bootstrap default js --> 
     <script src="js/bootstrap.min.js"></script>
     <!-- slick slider -->
     <script src="js/slick.min.js"></script>    
@@ -237,7 +241,6 @@
     <script src='js/photoswipe.min.js'></script>
     <script src='js/photoswipe-ui-default.min.js'></script>    
     <script src="js/photoswipe-gallery.js"></script>
- <script src="js/custom.js"></script>          
-                
-    </body>
+ <script src="js/custom.js"></script>
+</body>
 </html>

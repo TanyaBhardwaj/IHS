@@ -49,7 +49,7 @@ public class ChangePasswordServlet extends HttpServlet {
       getAuth.setString(2, username);
       getAuth.executeUpdate();
 
-            
+      response.sendRedirect("PasswordChanged.jsp");      
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

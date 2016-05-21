@@ -1,6 +1,6 @@
 <%-- 
-    Document   : SubmitHospital
-    Created on : 15 Mar, 2016, 12:16:43 AM
+    Document   : PasswordChanged
+    Created on : 20 May, 2016, 5:07:04 PM
     Author     : Tanya
 --%>
 
@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
@@ -36,17 +37,20 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
     <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>   
     <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
+  
+
+
     <style>
          .main{
             background-image: none;
             background-color: black;
         }
     </style>
-     <!-- jQuery Library  -->
-    <script src="js/jquery.js"></script>
+      <!-- jQuery Library  -->
+    <script src="js/jquery.js"></script> 
     </head>
     <body>
-         <!-- BEGAIN PRELOADER -->
+       <!-- BEGAIN PRELOADER -->
     <div id="preloader">
       <div id="status">&nbsp;</div>
     </div>
@@ -76,13 +80,15 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+       
+ 
+       
           <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
-          <li><a href="login.jsp"><span>LOGIN</span></a></li>
         
-          <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-      
+          <li><a href="contact.jsp"><span>CONTACTUS</span></a></li>
+        
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
-            <li class="dropdown">
+             <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Service <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="FirstAid.jsp">First Aid</a></li>
@@ -90,34 +96,48 @@
                     <li><a href="Fruits.jsp">Fruits and their benefits</a></li>
                   </ul>
                 </li>
-              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
-          </UL>
-     </div>
+          
+              <BR> <BR> <BR>
+         
+            
+       
+            <li><a href="index.jsp">SEARCH</a></li>
+            <li><a href="Feedback.jsp">FEEDBACK</a></li>
+            
+         
+          </ul>
+              </div>
           </div>
         </nav>
       </div>
 </header>
-      <div class="row">  
+    <div class="row">  
                 <div class="single-top-feature">
-         
+                    <BR>
+            
+                    <BR> <BR>
+                    <BR>
        
-          <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
-     
-            <h2 class="star"> <span></span> </h2>
-            <br>
-                   <h2 style="color:black; ">THANKYOU FOR REGISTERING WITH IHS :)</H2>
-                    
-                    <h2 style=" text-align: center; color:black;  ">YOU HAVE </h2>
-                     <h2 style="text-align: center; color:black">SUCCESSFULLY </h2>
-                      <h2 style="text-align: center; color:black">CREATED AN ACCOUNT </h2>
-                  
-                      <h2 style=" text-align: center; color:black;  ">You will soon get a verification mail on your Email </h2>
-                       <h2 style=" text-align: center; color:black;  ">Click the link given in that to begin your search </h2>
-                          <BR>
+                    <h2>HEY USER,</H2>
+                 
+                 
+                    <h2 style=" text-align: center; color:lightblueblue;  ">YOU HAVE </h2>
+                     <h2 style="text-align: center; color:lightblueblue">SUCCESSFULLY </h2>
+                      <h2 style="text-align: center; color:lightblueblue">CHANGED YOUR PASSWORD</h2>
+                      <h2 style="text-align: center; color:lightblueblue">YOU SHOULD NOW LOGIN WITH YOUR NEW PASSWORD</h2>
                       <BR>
-          </div>
-       </div>
-           <!--=========== Start Footer SECTION ================-->
+                   
+                   
+                      <form action="index.jsp" method="post">
+                           <button style="font-size:30px" type="submit">YOU CAN CONTINUE YOUR SEARCH</button>
+                           <BR>
+                           <BR>
+                        
+                      </form>
+                </div>
+    </div>
+                    
+        <!--=========== Start Footer SECTION ================-->
     <footer id="footer">
       <!-- Start Footer Top -->
       <div class="footer-top">

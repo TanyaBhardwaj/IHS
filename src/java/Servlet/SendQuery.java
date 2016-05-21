@@ -54,7 +54,7 @@ public class SendQuery extends HttpServlet {
        addUser.setString(3, website);
         addUser.setString(4, message);
       addUser.executeUpdate();
-       response.sendRedirect("index.jsp");
+       response.sendRedirect("SendQuery.jsp");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

@@ -43,29 +43,23 @@ public class UpdateWorkplace extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-             String name,email,type,ownership,specialization,website;
-            name=request.getParameter("workname");
-            email=request.getParameter("email");
+             String name,email,type,ownership,specialization,website,time;
             type=request.getParameter("type");
             ownership=request.getParameter("ownership");
             specialization=request.getParameter("spec");
-            
+            time = request.getParameter("time");
             website=request.getParameter("website");
             HttpSession session=request.getSession();
          Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-              PreparedStatement UpdateProfile=conn.prepareStatement("select workplace_name, workplace_email,workplace_type,workplace_ownership,workplace_spec,workplace_website from workplace where workplace_id=? ;");
-              UpdateProfile.setString(1, name);
-              UpdateProfile.setString(2, email);
-              UpdateProfile.setString(3, type);
-              UpdateProfile.setString(4, ownership);
-              UpdateProfile.setString(5, specialization);
-          
-                UpdateProfile.setString(6, website);
+              PreparedStatement UpdateProfile=conn.prepareStatement("UPDATE workplace set workplace_website=?,workplace_type=?,workplace_ownership=? where workplace_id=? ;");
+              UpdateProfile.setString(1, website);
+              UpdateProfile.setString(2, type);
+              UpdateProfile.setString(3, ownership);
               
-              UpdateProfile.setString(6, session.getAttribute("workplace_id").toString());
+              UpdateProfile.setString(4, session.getAttribute("workplace_id").toString());
               UpdateProfile.executeUpdate();
-              
+              response.sendRedirect("UpdateWorkplace.jsp");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
                         response.sendRedirect("UserLoginResult.jsp");
                         break;
                     case "Doctor":
-                        PreparedStatement getdocs=conn.prepareStatement("select doc_id from user where doc_email=?");
+                        PreparedStatement getdocs=conn.prepareStatement("select doc_id from doctor where doc_email=?");
                         getdocs.setString(1, username);
                         ResultSet docs=getdocs.executeQuery();
                         docs.first();
@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
                         response.sendRedirect("DocLoginResult.jsp");
                         break;
                     case "Workplace":
-                        PreparedStatement getworkplace=conn.prepareStatement("select workplace_id from user where workplace_email=?");
+                        PreparedStatement getworkplace=conn.prepareStatement("select workplace_id from workplace where workplace_email=?");
                         getworkplace.setString(1, username);
                         ResultSet workplace=getworkplace.executeQuery();
                         workplace.first();
@@ -86,7 +86,7 @@ public class LoginServlet extends HttpServlet {
                         break;
                     default:
                         break;
-                }
+                }   
               
           }
       

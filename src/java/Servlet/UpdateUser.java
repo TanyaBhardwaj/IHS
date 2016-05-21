@@ -50,7 +50,7 @@ public class UpdateUser extends HttpServlet {
              HttpSession session=request.getSession();
             Class.forName("com.mysql.jdbc.Driver");
               Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-              PreparedStatement UpdateProfile=conn.prepareStatement("update user set user_state=?, user_city=?, user_phone=? where doc_id=?");
+              PreparedStatement UpdateProfile=conn.prepareStatement("update user set user_state=?, user_city=?, user_phone=? where user_id=?");
               UpdateProfile.setString(1, state);
               UpdateProfile.setString(2, city);
              
@@ -58,6 +58,7 @@ public class UpdateUser extends HttpServlet {
         
                UpdateProfile.setString(4, session.getAttribute("user_id").toString());
               UpdateProfile.executeUpdate();
+              response.sendRedirect("UpdateUser.jsp");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
