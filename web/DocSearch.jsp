@@ -48,7 +48,7 @@
         
 <%
     Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");          
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");          
     String cat=request.getParameter("cat");
               String term="";
               if(request.getParameter("editbox_search")!=null)
@@ -177,7 +177,7 @@
                   </ul>
                 </li>
             <li><a href="UserProfile.jsp">PROFILE</a></li>
-                <li><a href="login.jsp"><span>LOGOUT</span></a></li>
+                <li><a href="index.jsp"><span>LOGOUT</span></a></li>
           </UL>
             </div>
           </div>
