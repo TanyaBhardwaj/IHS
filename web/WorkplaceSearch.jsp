@@ -47,7 +47,7 @@
             
            
     Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");          
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");          
     String cat=request.getParameter("cat");
     String type=request.getParameter("type");
               String term="";

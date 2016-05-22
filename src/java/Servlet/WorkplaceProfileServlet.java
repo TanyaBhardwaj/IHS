@@ -58,7 +58,7 @@ public class WorkplaceProfileServlet extends HttpServlet {
             try {
                 HttpSession session=request.getSession();
                 Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
       PreparedStatement AddPhoto=conn.prepareStatement("update workplace set workplace_photo=? where workplace_id=?");
       AddPhoto.setBlob(1, fileContent);
       AddPhoto.setInt(2, Integer.parseInt(session.getAttribute("workplace_id").toString()));

@@ -53,7 +53,7 @@
                   edit_flag=Integer.parseInt(request.getParameter("edit_flag"));
               }
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               PreparedStatement GetDocInfo=conn.prepareStatement("select workplace_name, workplace_email,workplace_type,workplace_ownership,workplace_spec,workplace_about,workplace_website from workplace where workplace_id=? ;");
                GetDocInfo.setString(1, session.getAttribute("workplace_id").toString());
               ResultSet DocInfo=GetDocInfo.executeQuery();

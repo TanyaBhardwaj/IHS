@@ -1,19 +1,16 @@
 <%-- 
-    Document   : DocWorkplaces
-    Created on : 22 Mar, 2016, 1:31:44 AM
+    Document   : UserLogin
+    Created on : 14 Apr, 2016, 4:05:10 PM
     Author     : Tanya
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-          <title>Indian Health Services</title>
+   
+        <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
@@ -47,19 +44,14 @@
             background-image: none;
             background-color: black;
         }
-        table{
-            border-spacing: 30px;
-        }
-        td{
-             border: solid 1px black;
-             padding: 10px;
-        }
     </style>
       <!-- jQuery Library  -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script>    
+   
     </head>
     <body>
-      <!-- BEGAIN PRELOADER -->
+     
+         <!-- BEGAIN PRELOADER -->
     <div id="preloader">
       <div id="status">&nbsp;</div>
     </div>
@@ -90,65 +82,42 @@
             <div id="navbar" class="navbar-collapse collapse">
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
           <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
-          <li><a href="login.jsp"><span>LOGIN</span></a></li>
           <li><a href="register.jsp"><span>REGISTER</span></a></li>
           <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-        
+         
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
-              <li>  <a href="#"><span>FIRST AID</span></a></li>
-              <li>    <a href="#"><span>DISEASES</span></a></li>
+              <li>  <a href="#"><span>SERVICES</span></a></li>
               <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
           </UL>
-              
-               </div>
+       </div>
           </div>
         </nav>
       </div>
 </header>
        <div class="row">  
                 <div class="single-top-feature">
-                    <br><br><br><br><br><br><br><br><br><br><br><br>    
-     
-          <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
-       <% 
-Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
-              PreparedStatement GetWorkplaces=conn.prepareStatement("select workplace.workplace_id, workplace_name, workplace_type from workplace inner join specdoctors on workplace.workplace_id=specdoctors.workplace_id where specdoctors.doc_id=? ");
-              GetWorkplaces.setString(1, request.getParameter("doc_id"));
-              ResultSet Workplaces=GetWorkplaces.executeQuery();
-       %>
-                     <table>
-                         <% while(Workplaces.next()) { %>
-                          <tr style="border: 1px solid black">
-                              
-                              <td><%
-                                  if(Workplaces.getString("workplace_type").equalsIgnoreCase("hospital"))
-                                  {
-                                      %>
-                                      <a href="AboutHosp.jsp?workplace_id=<%=Workplaces.getString("workplace_id")%>"><%=Workplaces.getString("workplace_name")%> </a>
-                                  <%
-                                  }else if(Workplaces.getString("workplace_type").equalsIgnoreCase("lab"))
-                                  {
-                                        %>
-                                      <a href="AboutLab.jsp?workplace_id=<%=Workplaces.getString("workplace_id")%>"><%=Workplaces.getString("workplace_name")%> </a>
-                                  <%
-                                  }
-                                  %>
-                                  
-                    </td> 
-                       
-                    
-           </tr>
-               
+         
+       
                  
-           <% } %>
-           </table>
-                    <form action="BookAppointment.jsp" method="post">
-                        <input type="hidden" name="doc_id" value="<%=request.getParameter("doc_id")%>">
-                     <button style="font-size:25px" type="submit">BOOK APPOINTMENT</button>
-                    </form>
-</div>
-</div>
+                 
+                 
+        
+        <form action="LoginServlet" method="post">
+          
+            <br><br>
+            
+            <label style="font-size: 30px">USER EMAIL <br></label><input type="email" name="username" required><br>
+        <br>
+        <br>
+        <label style="font-size: 30px">PASSWORD <br></label><input type="password" name="password" ><br>
+        <br>
+        <br>
+        <button style="font-size:30px" type="submit">LOGIN</button>
+        <!--<input type="submit" value="Forgot Password" onclick="form.action='ForgotPassword';">-->
+        </form>
+                    
+                </div>
+       </div>
             <!--=========== Start Footer SECTION ================-->
       <footer id="footer">
       <!-- Start Footer Top -->
@@ -260,6 +229,6 @@ Class.forName("com.mysql.jdbc.Driver");
     <script src='js/photoswipe.min.js'></script>
     <script src='js/photoswipe-ui-default.min.js'></script>    
     <script src="js/photoswipe-gallery.js"></script>
- <script src="js/custom.js"></script>    
+ <script src="js/custom.js"></script>
     </body>
 </html>

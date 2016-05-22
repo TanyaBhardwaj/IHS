@@ -49,7 +49,7 @@ public class UpdateDoc extends HttpServlet {
             exp=request.getParameter("exp");
              HttpSession session=request.getSession();
             Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
               PreparedStatement UpdateProfile=conn.prepareStatement("update doctor set doc_state=?, doc_city=?, doc_spec=?,doc_qual=?,doc_exp=? where doc_id=?");
               UpdateProfile.setString(1, state);
               UpdateProfile.setString(2, city);

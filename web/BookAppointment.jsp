@@ -60,7 +60,7 @@
     <%
         
          Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
             Calendar cal=Calendar.getInstance();
             int i=0;
         %>
