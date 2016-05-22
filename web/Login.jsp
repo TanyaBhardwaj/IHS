@@ -113,7 +113,7 @@
         <br>
         <br>
         <button style="font-size:30px" type="submit">LOGIN</button>
-        <!--<input type="submit" value="Forgot Password" onclick="form.action='ForgotPassword';">-->
+        <input type="submit" value="Forgot Password" onclick="form.action='ForgotPassword';">
         </form>
                     
                 </div>
