@@ -51,7 +51,7 @@ public class UpdateWorkplace extends HttpServlet {
             website=request.getParameter("website");
             HttpSession session=request.getSession();
          Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement UpdateProfile=conn.prepareStatement("UPDATE workplace set workplace_website=?,workplace_type=?,workplace_ownership=? where workplace_id=? ;");
               UpdateProfile.setString(1, website);
               UpdateProfile.setString(2, type);

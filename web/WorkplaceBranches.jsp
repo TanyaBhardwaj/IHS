@@ -45,7 +45,7 @@
             
               String workplaceid=request.getSession().getAttribute("workplace_id").toString();
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               String query="select branch_state, branch_city,branch_area,branch_contact,branch_timing,branch_photo,branch_address from branch where workplace_id=? ";
               PreparedStatement GetDocInfo=conn.prepareStatement(query);
                

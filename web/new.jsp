@@ -1,24 +1,18 @@
 <%-- 
-    Document   : BookAppointment
-    Created on : 22 Mar, 2016, 11:57:13 AM
+    Document   : new
+    Created on : 22 May, 2016, 10:38:48 AM
     Author     : Tanya
 --%>
 
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Calendar"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <title>Indian Health Services</title>
+        <title>Indian Health Services</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
+        <link rel="shortcut icon" type="image/icon" href="images/favicon.ico"/>
 
     <!-- CSS
     ================================================== -->       
@@ -48,25 +42,28 @@
             background-image: none;
             background-color: black;
         }
-        table{
-             border: solid 1px black;
+        .content{
+            background-color:lightpink;
         }
-         td{
-             border: solid 1px black;
+        p{
+            padding-left: 20px;
+            padding-right: 20px;
+            color: brown;
+        }
+        a{
+             color:#0B91EA;
+             
+        }
+        h4{
+            color: red;
         }
     </style>
+    
     <!-- jQuery Library  -->
-    <script src="js/jquery.js"></script>    
-    <%
-        
-         Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
-            Calendar cal=Calendar.getInstance();
-            int i=0;
-        %>
+    <script src="js/jquery.js"></script> 
     </head>
     <body>
-        <!-- BEGAIN PRELOADER -->
+         <!-- BEGAIN PRELOADER -->
     <div id="preloader">
       <div id="status">&nbsp;</div>
     </div>
@@ -90,162 +87,87 @@
               </button>
               <!-- LOGO -->              
               <!-- TEXT BASED LOGO -->
-              <a class="navbar-brand" href="index.jsp"><i class="fa fa-heartbeat"></i> <span>Indian Health Services</span></a>              
+              <a class="navbar-brand" href="index.jsp"><i class="fa fa-heartbeat"></i> 
+                  
+                  <div class="logotext">    <span>Indian Health Services</span> </div></a>              
               <!-- IMG BASED LOGO  -->
               <!--  <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>   -->                    
             </div>
             <div id="navbar" class="navbar-collapse collapse">
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
           <li class="active"><a href="index.jsp"><span>HOME</span></a></li>
-         
+          <li><a href="login.jsp"><span>LOGIN</span></a></li>
+          <li><a href="register.jsp"><span>REGISTER</span></a></li>
           <li><a href="contact.jsp"><span>CONTACT US</span></a></li>
-              <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
-            <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Service <span class="fa fa-angle-down"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="FirstAid.jsp">First Aid</a></li>
-                    <li><a href="Diseases,jsp">Diseases</a></li>
-                    <li><a href="Fruits.jsp">Fruits and their benefits</a></li>
-                  </ul>
-                </li>
-              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
-             
-               <li> <a href="UserProfile.jsp"><span>PROFILE</span></a></li>
-                <li> <a href="index.jsp"><span>LOGOUT</span></a></li>
-          </UL>
-       </div>
-          </div>
-        </nav>
-      </div>
-</header>
-    <br>
-    <br>
-       <div class="row">  
-                <div class="single-top-feature">
-         
-       
-          <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
-           
-         
-          <ul class="sb_menu">
-              
           
-            <li><a href=""></a></li>
-             <li><a href=""></a></li>
-             <li><a href="#"></a></li>
-          </ul>
-            <center>
-              <table>
-            <tr>`
-                <td>DATE</td> <br>
-            <td>MORNING</td>
-            <td>AFTERNOON</td>
-            <td>EVENING</td>
-            </tr>
-            <% 
-                for(i=0;i<15;i++)
-                {
-                    cal.add(Calendar.DAY_OF_MONTH, i);
-                    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-                        
-                
-            %>
-            <tr>
-                <td>
-                    <% 
-                    
-            out.println(format1.format(cal.getTime()));
-                    %>
-                </td><td>
-                    <table>
-                        <% PreparedStatement getmslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='morning' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
-            getmslots.setString(1, request.getParameter("doc_id"));
-            getmslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
-            ResultSet mslots=getmslots.executeQuery();
-                            while(mslots.next())
-                        { 
-                           %>
-                           <tr>
-                               <td><%=mslots.getString("start_time")%></td>
-                               <td><%=mslots.getString("end_time")%></td>
-                               
-                                       <td><form action="AppointmentServlet">
-                                               <input type="hidden" name="slot_id" value="<%=mslots.getString("slot_id")%>">
-                                               <input type="hidden" name="appointment_date" value="<%=cal.getTimeInMillis()%>">
-                                               <button>BOOK</button>
-                                   </form>
-                                   </td>
-                        </tr>
-                        <% 
-                        }%>
-                        
-                        
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <% PreparedStatement getaslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='afternoon' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
-            getaslots.setString(1, request.getParameter("doc_id"));
-            getaslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
-            ResultSet aslots=getaslots.executeQuery();
-                            while(aslots.next())
-                        { 
-                           %>
-                           <tr>
-                               <td><%=aslots.getString("start_time")%></td>
-                               <td><%=aslots.getString("end_time")%></td>
-                               
-                                       <td><form action="AppointmentServlet">
-                                               <input type="hidden" name="slot_id" value="<%=aslots.getString("slot_id")%>">
-                                               <input type="hidden" name="appointment_date" value="<%=cal.getTimeInMillis()%>">
-                                               <button>BOOK</button>
-                                   </form>
-                                   </td>
-                        </tr>
-                        <% 
-                        }%>
-                        
-                        
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <% PreparedStatement geteslots=conn.prepareStatement("select slot_id,start_time,end_time from doctor_slot where doctor_id=? and slot_status='evening' and slot_id NOT IN (select slot_id from appointments where appointment_date=?) ");
-            geteslots.setString(1, request.getParameter("doc_id"));
-            geteslots.setDate(2, new java.sql.Date(cal.getTimeInMillis()));
-            ResultSet eslots=geteslots.executeQuery();
-                            while(eslots.next())
-                        { 
-                           %>
-                           <tr>
-                               <td><%=eslots.getString("start_time")%></td>
-                               <td><%=eslots.getString("end_time")%></td>
-                               
-                                       <td><form action="AppointmentServlet">
-                                               <input type="hidden" name="slot_id" value="<%=eslots.getString("slot_id")%>">
-                                               <input type="hidden" name="appointment_date" value="<%=cal.getTimeInMillis()%>">
-                                               <button>BOOK</button>
-                                   </form>
-                                   </td>
-                        </tr>
-                        <% 
-                        }%>
-                        
-                        
-                    </table>
-                </td>
-            </tr>
-            <% } %>
-                
-              </table> </center>
-                <BR>
-                
-               
-                <h3 style=" text-align: center; color:black;  "><u>RS.100 EXTRA FOR ONLINE BOOKING </u></h3>
-</div>
-</div>
+           
+       
+              <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
+             
+              <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
+          </UL>
 
-              <!--=========== Start Footer SECTION ================-->
+</header>
+    <div class="row">  <br> <br> 
+                <div class="single-top-feature">
+      
+                 
+                    
+                
+                    <br> 
+                            <div class="style2"><a name="top"><h3 align="center"></h3></a></div>
+                            <h3 style="color: blue">   <img src="C:\Users\Tanya\Documents\NetBeansProjects\WebApplication4\web\images\Fruits\fruit.jpg" width="700" height="700"   alt="Fruit-Benefits"> </h3>
+                            <table  style="border: 1px solid black;">
+                                <tr  style="border: 1px solid black;"> <td  style="border: 2px solid black;padding:8px;"><strong><i>ACAI BERRIES</i></strong><br> 
+    <p align="justify" style="padding:5px">
+             Acai is rich in <strong>antioxidants</strong> such as <strong>Vitamin C </strong>and<strong> polyphenols.</strong> It contains ample amount of <strong>iron, calcium and vitamin A</strong>. Acai has high caloric values and fats when compared with other berries </p>
+    <strong>      <a href="http://www.fruitsinfo.com/acai-tropicalfruits.php">Read more</a></strong>
+                                    </td>
+                                    <td  style="border: 2px solid black;padding:8px;"> <strong><i>KUMQUAT</i></strong><p > 
+            <p align="justify" style="padding:5px">These fruits are cholesterol, fat, and sodium free.              They provide a good source of fiber and of the vitamins A and C.              Can cook with sugar then use to top pound cake. The fruit has a sweet outer skin and a tart inner flesh. </p><strong><a href="http://www.fruitsinfo.com/Kumquat-Exotic-fruits.php">Read more</a></strong> 
+                         
+                                    
+                                    <td  style="border: 2px solid black;padding:8px;"> <strong><i>POMEGRANATE</i></strong><p align="center">
+           </p>
+           <p align="justify" style="padding:5px"> In the Christian art, it is found in devotional statues and paintings. It is used as a gargle for sore throat, and to treat hemorrhoids. People use pomegranate for flu, stomatitis, gum, diabetes,  etc.</p><strong><a href="http://www.fruitsinfo.com/pomegranate-health-benefits-nutrition-values.php">Read more</a></strong>
+                                    </td> </tr>
+                                <tr  style="border: 1px solid black;padding:8px;"> <td  style="border: 2px solid black;">               
+                                        <strong><i>ALMOND</i></strong><p align="center">
+    <p align="justify" style="padding:5px">Almonds paste with milk cream, applying regularly makes skin fair with glow.
+                  It is rich in Iron, copper, phosphorus and vitamin B1.
+                  Almond oil applied over forehead relieves headache. Almond flour is gluten free. <br></p>
+             <strong><a href="http://www.fruitsinfo.com/fleshy_simple_fruits.htm">Read more</a></strong>
+     </td>
+     <td  style="border: 2px solid black;padding:8px;"><strong><i>KIWI</i></strong><p align="center"></p>
+            <p align="justify" style="padding:5px">It is a small fruit that protects DNA from mutations.Kiwi an exotic fruit contain as much potassium as bananas. Asthma, wheezing, Coughing and colon cancer especially in children can be prevented.<br /></p>
+            <strong><a href="http://www.fruitsinfo.com/kiwi-health-benefits-nutrition-values.php">Read more</a></strong>
+     </td>
+                          
+     <td  style="border: 2px solid black;padding:8px;"> <strong><i>PRUNES</i></strong><p align="center"></p>
+            <p align="justify" style="padding:5px">Prunes contains lot of fibers and sorbitol a stool loosening sugar.              Prunes have a laxative effect. Dried prune is better than fresh prune.
+                The salts contained in the dried prune are valuable as food for the blood, brain, and nerves.</p><strong><a href="http://www.fruitsinfo.com/prunes-health-benefits-nutrition-values.php">Read more</a></strong>
+     </td>     
+                                </tr>               </table>    
+                           <br />
+                                <div align="center">
+                              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- fruits-300x250 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-0931564571621139"
+     data-ad-slot="1410789141"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+                            <br /> 
+                          
+                   
+                            <div> </div>             
+      
+                        
+    
+     <!--=========== Start Footer SECTION ================-->
     <footer id="footer">
       <!-- Start Footer Top -->
       <div class="footer-top">

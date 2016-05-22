@@ -48,7 +48,7 @@
         
 <%
     Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");          
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");          
     String cat=request.getParameter("cat");
               String term="";
               if(request.getParameter("editbox_search")!=null)

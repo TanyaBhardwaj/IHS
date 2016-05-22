@@ -45,7 +45,7 @@
     String workplaceid=request.getParameter("workplace_id");
               
     Class.forName("com.mysql.jdbc.Driver");
-    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
     String query="select doc_name,doc_spec, doc_fee from doctor inner join specdoctors on specdoctors.doc_id=doctor.doc_id where workplace_id=? ";
     PreparedStatement GetDocInfo=conn.prepareStatement(query);
     GetDocInfo.setString(1, workplaceid);

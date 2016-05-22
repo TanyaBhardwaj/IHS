@@ -101,26 +101,26 @@
               <li><a href="aboutus.jsp"><span>ABOUT US</span></a></li>
              
               <li> <a href="Feedback.jsp"><span>FEEDBACK</span></a></li>
-        </UL> <br>
+               <br>
+        
+        </ul> <br>
                  <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-          <li class="active"><a href="FirstAidKit.jsp"><span>First aid kit list</span></a></li>
-          <li><a href="KitchenSafety.jsp"><span>Kitchen safety rules and tips</span></a></li>
-          <li><a href="PersonalSafety.jsp"><span>Personal safety tips for kids at home</span></a></li>
+          <li><a href="FirstAidKit.jsp"><span>First aid kit list</span></a></li>
+          <li><a href="KitchenSafety.jsp"><span>Kitchen safety rules</span></a></li>
+          <li><a href="PersonalSafety.jsp"><span>Safety tips for kids</span></a></li> 
+                
+                
           <li><a href="SafetyMeasures.jsp"><span>Safety measures at home</span></a></li>
-       
+          <br>
               <li><a href="Bleeding.jsp"><span>How to stop bleeding</span></a></li>
+              
              
               <li> <a href="Dressing.jsp"><span>Types of dressings for wounds</span></a></li>
+              <li ><a title="What is Resuscitation " href="Resucitation.jsp">What is resuscitation</a></li>
           </UL>
+         
         
         
-        <p style="text-align: center;"><strong><a title="First Aid Kit list" href="FirstAidKit.jsp">First aid kit list</a></strong></p>
-<p style="text-align: center;"><strong><a title="Kitchen safety rules and tips" href="KitchenSafety.jsp">Kitchen safety rules and tips</a></strong></p>
-<p style="text-align: center;"><strong><a title="Personal safety tips for kids at home" href="PersonalSafety.jsp">Personal safety tips for kids at home</a></strong></p>
-<p style="text-align: center;"><strong><a title="Safety measures at home" href="SafetyMeasures.jsp">Safety measures at home</a></strong></p>
-<p style="text-align: center;"><strong><a title="How to stop bleeding" href="Bleeding.jsp">How to stop bleeding</a></strong></p>
-<p style="text-align: center;"><strong><a title="Types of dressings for wounds" href="Dressing.jsp">Types of dressings for wounds</a></strong></p>
-<p style="text-align: center;"><strong><a title="What is Resuscitation " href="Resucitation.jsp">What is resuscitation</a></strong></p>
       </div>
           </div>
         </nav>

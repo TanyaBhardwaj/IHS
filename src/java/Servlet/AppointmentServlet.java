@@ -42,7 +42,7 @@ public class AppointmentServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement AddAppointment=conn.prepareStatement("insert into appointments(slot_id,user_id,appointment_date) values(?,?,?)");
               AddAppointment.setString(1, request.getParameter("slot_id"));
               AddAppointment.setString(2, request.getSession().getAttribute("user_id").toString());

@@ -49,7 +49,7 @@ public class UpdateUser extends HttpServlet {
            contact=request.getParameter("contact");
              HttpSession session=request.getSession();
             Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement UpdateProfile=conn.prepareStatement("update user set user_state=?, user_city=?, user_phone=? where user_id=?");
               UpdateProfile.setString(1, state);
               UpdateProfile.setString(2, city);

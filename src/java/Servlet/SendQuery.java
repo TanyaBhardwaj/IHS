@@ -46,7 +46,7 @@ public class SendQuery extends HttpServlet {
              String website=request.getParameter("website");
               String message=request.getParameter("message");
             Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
        
       PreparedStatement addUser=conn.prepareStatement("insert into contact(contact_name,contact_email,contact_website,contact_message) values(?,?,?,?) ");
       addUser.setString(1, name);

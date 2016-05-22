@@ -44,7 +44,7 @@
 <%
               String docid=request.getParameter("doc_id");
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               String query="select doc_name,doc_photo, doc_about,doc_state,doc_city,doc_phone,doc_email ,doc_category,doc_spec,doc_qual,doc_exp from doctor where doc_id=? ";
               PreparedStatement GetDocInfo=conn.prepareStatement(query);
                 GetDocInfo.setString(1, docid);

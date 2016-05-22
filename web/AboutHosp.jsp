@@ -44,7 +44,7 @@
 <%
               String workplaceid=request.getParameter("workplace_id");
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               String query="select workplace.workplace_id ,workplace_name,workplace_photo, workplace_type, workplace_ownership,workplace_spec,workplace_about,workplace_website,branch_state,branch_city,branch_contact from workplace inner join branch on branch.workplace_id=workplace.workplace_id where workplace.workplace_id=?";
               PreparedStatement GetDocInfo=conn.prepareStatement(query);
                 GetDocInfo.setString(1, workplaceid);

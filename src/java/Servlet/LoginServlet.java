@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             String username=request.getParameter("username");
             String password=request.getParameter("password");
             Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
        
       PreparedStatement getAuth=conn.prepareStatement("Select auth_id, auth_password,auth_type from ihs.auth where auth_id=? and auth_password=?");
       getAuth.setString(1, username);

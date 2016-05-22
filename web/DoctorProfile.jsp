@@ -55,7 +55,7 @@
                   edit_flag=Integer.parseInt(request.getParameter("edit_flag"));
               }
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement GetDocInfo=conn.prepareStatement("select doc_city,doc_state,doc_qual,doc_spec,doc_exp,doc_about,doc_fee from doctor where doc_id=? ;");
               GetDocInfo.setString(1, request.getSession().getAttribute("doc_id").toString());
               ResultSet DocInfo=GetDocInfo.executeQuery();

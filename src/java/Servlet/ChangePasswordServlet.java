@@ -41,7 +41,7 @@ public class ChangePasswordServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             Class.forName("com.mysql.jdbc.Driver");
-                   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+                   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
        String username=request.getParameter("user_email");
        String password=request.getParameter("user_password");
       PreparedStatement getAuth=conn.prepareStatement("update ihs.auth set auth_password=? where  auth_id=?");

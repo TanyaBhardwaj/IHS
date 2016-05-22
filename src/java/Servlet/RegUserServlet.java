@@ -66,7 +66,7 @@ public class RegUserServlet extends HttpServlet {
             }
 
                       Class.forName("com.mysql.jdbc.Driver");
-                      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+                      Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
                       PreparedStatement AddAuth=conn.prepareStatement("INSERT INTO auth(auth_id,auth_password,auth_type) VALUES(?,?,?)");
                       AddAuth.setString(1, Email);
                       AddAuth.setString(2, new String(Password));

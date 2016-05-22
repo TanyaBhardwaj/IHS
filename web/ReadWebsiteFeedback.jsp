@@ -45,7 +45,7 @@
               session=request.getSession();
                 String workplacefeedback=request.getParameter("workplace_id");
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               String query="select user_name,user_photo,feedback from user_feedback inner join user on user.user_id=user_feedback.user_id where workplace_id=? ";
               PreparedStatement AddUser=conn.prepareStatement(query);
                 AddUser.setString(1,workplacefeedback);

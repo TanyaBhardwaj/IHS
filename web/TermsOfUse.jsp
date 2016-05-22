@@ -168,7 +168,7 @@ li {
 						</div>
 						<div class="white_item">
 							<p style="text-align: left; margin-left: 50px;">
-								Welcome to the portal <a href="https://www.lybrate.com">www.lybrate.com</a>,
+                                                            Welcome to the portal <a href="index,jsp"><b>www.ihs.com</b></a>,
 								(the "<b>Website</b>"). The Website is operated by Lybrate India
 								Private Limited., having its registered office at 199 Sector
 								15A, Faridabad, Haryana, India, 121007.

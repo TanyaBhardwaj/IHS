@@ -59,7 +59,7 @@ public class DocProfileServlet extends HttpServlet {
             try {
                  HttpSession session=request.getSession();
                 Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
       PreparedStatement AddPhoto=conn.prepareStatement("update doctor set doc_photo=? where doc_id=?");
       AddPhoto.setBlob(1, fileContent);
       AddPhoto.setInt(2, 1);

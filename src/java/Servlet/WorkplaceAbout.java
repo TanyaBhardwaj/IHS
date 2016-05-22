@@ -45,7 +45,7 @@ public class WorkplaceAbout extends HttpServlet {
             
             HttpSession session=request.getSession();
             Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement UpdateProfile=conn.prepareStatement("update workplace set workplace_about=? where workplace_id=?");
               UpdateProfile.setString(1, about_me);
               UpdateProfile.setString(2, session.getAttribute("workplace_id").toString());

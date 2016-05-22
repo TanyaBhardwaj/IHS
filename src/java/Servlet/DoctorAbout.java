@@ -47,7 +47,7 @@ public class DoctorAbout extends HttpServlet {
             
             HttpSession session=request.getSession();
             Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement UpdateProfile=conn.prepareStatement("update doctor set doc_about=? where doc_id=?");
               UpdateProfile.setString(1, about_me);
               UpdateProfile.setString(2, session.getAttribute("doc_id").toString());

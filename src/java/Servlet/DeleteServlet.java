@@ -42,7 +42,7 @@ public class DeleteServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String id=request.getParameter("id");
                         Class.forName("com.mysql.jdbc.Driver");
-       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "sr71xb35");
+       Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/tanyadb", "root", "tanyabhardwaj");
       PreparedStatement DeleteUser =conn.prepareStatement("Delete from users where user_id=?");
       DeleteUser.setString(1, id);
       DeleteUser.executeUpdate();

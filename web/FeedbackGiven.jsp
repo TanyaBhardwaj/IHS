@@ -11,7 +11,7 @@ w<%--
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     
        
         <title>Indian Health Services</title>
         <meta charset="UTF-8">
@@ -46,7 +46,7 @@ w<%--
               session=request.getSession();
                 String workplacefeedback=request.getParameter("workplace_id");
               Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               String query="insert into user_feedback(workplace_id,user_id,feedback) value(?,?,?) ";
               PreparedStatement AddUser=conn.prepareStatement(query);
                 AddUser.setString(1,workplacefeedback);

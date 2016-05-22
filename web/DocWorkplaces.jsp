@@ -112,7 +112,7 @@
           <h1><a href="index.jsp"><span></span> <small style="color:blue;"></small></a></h1>
        <% 
 Class.forName("com.mysql.jdbc.Driver");
-              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "sr71xb35");
+              Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/ihs", "root", "tanyabhardwaj");
               PreparedStatement GetWorkplaces=conn.prepareStatement("select workplace.workplace_id, workplace_name, workplace_type from workplace inner join specdoctors on workplace.workplace_id=specdoctors.workplace_id where specdoctors.doc_id=? ");
               GetWorkplaces.setString(1, request.getParameter("doc_id"));
               ResultSet Workplaces=GetWorkplaces.executeQuery();
